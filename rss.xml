@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 08 Dec 2019 01:04:03 GMT</lastBuildDate><item><title><![CDATA[TSLint에서 ESLint로]]></title><description><![CDATA[TSLint는 2019년이 끝 TSLint will be deprecated some time in 2019. 올해 초부터 공표했듯이 TSLint는 2019년을 끝으로 더는 사용되지 않는다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 09 Dec 2019 04:27:22 GMT</lastBuildDate><item><title><![CDATA[TSLint에서 ESLint로]]></title><description><![CDATA[TSLint는 2019년이 끝 TSLint will be deprecated some time in 2019. 올해 초부터 공표했듯이 TSLint는 2019년을 끝으로 더는 사용되지 않는다.
 마이그레이션은 꽤 귀찮은 일이지만 피할 수 없기에 1…]]></description><link>https://lannex.github.io/blog/TSLint-deprecated/</link><guid isPermaLink="false">https://lannex.github.io/blog/TSLint-deprecated/</guid><pubDate>Thu, 05 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;TSLint는 2019년이 끝&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;TSLint will be deprecated some time in 2019.&lt;/p&gt;
@@ -99,7 +99,7 @@ $ ./node_modules/.bin/eslint --init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;span class=&quot;token property&quot;&gt;&quot;react/state-in-constructor&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;마무리&lt;/h1&gt;
+&lt;h1&gt;끝마치며&lt;/h1&gt;
 &lt;p&gt;lint가 필수는 아니지만, 지금까지 lint를 사용함으로써 얻는 장점이 더 크다고 생각한다. 1인 개발이든 팀 개발이든 lint를 사용하여 더욱 높은 가독성과 여러 오류에서 벗어나는 게 좋지 않을까? &lt;small&gt;(물론 다른 의견도 환영)&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Optional Chaining, Nullish Coalescing]]></title><description><![CDATA[한 달 어느덧 Typescript 3.7이 배포된 지 한 달가량이 되었다. 여러 기능적인 면에서 많은 업데이트가 되었는데 그중 가장 많이 또 만족스럽게 사용 중인 Optional Chaining, Nullish Coalescing…]]></description><link>https://lannex.github.io/blog/Typescript-3-7/</link><guid isPermaLink="false">https://lannex.github.io/blog/Typescript-3-7/</guid><pubDate>Sun, 01 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;한 달&lt;/h1&gt;
 &lt;p&gt;어느덧 Typescript 3.7이 배포된 지 한 달가량이 되었다. 여러 기능적인 면에서 많은 업데이트가 되었는데 그중 가장 많이 또 만족스럽게 사용 중인 Optional Chaining, Nullish Coalescing을 소개하고자 한다.&lt;/p&gt;
 &lt;h1&gt;Optional Chaining&lt;/h1&gt;
