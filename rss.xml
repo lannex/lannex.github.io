@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Dec 2019 05:05:34 GMT</lastBuildDate><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 1부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 1 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</guid><pubDate>Wed, 11 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Dec 2019 05:13:51 GMT</lastBuildDate><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 1부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 1 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀(a lot…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</guid><pubDate>Wed, 11 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://dev.to/deepu105/golang-for-javascript-developers-part-1-38je&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Golang for JavaScript developers - Part 1&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;시작&lt;/h1&gt;
-&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
+&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀&lt;small&gt;(a lot of momentum)&lt;/small&gt;과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;p&gt;Edit: 어떤 사람이 댓글에서 JS 개발자가 가능한 모든 옵션 중에서 왜 Go를 선택해야 하는지 물었다.
 &lt;a href=&quot;https://dev.to/deepu105/my-love-hate-relationship-with-javascript-3p66&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;내 생각에&lt;/a&gt;, JS는 완벽한 언어가 아니기 때문에 다른 언어를 배우면 JS 개발자가 JS를 더 실용적으로 사용할 수 있게 큰 도움이 될 것이고 기본적인 프로그래밍 개념에 대한 그녀/그의 지식을 강화하는 데도 도움이 될 것이다.
@@ -10,9 +10,9 @@
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;p&gt;이 포스트는 언어를 비교하는 것이 아니고 그들이 매우 유사하다고 말하고 있다.
 이것은 JavaScript 개발자가 Golang을 빨리 파악할 수 있는 가이드이다.
-Go에는 우리가 다룰 자바스크립트와 완전히 다른 많은 측면들이 있다.&lt;/p&gt;
+Go에는 우리가 다룰 자바스크립트와 완전히 다른 많은 측면들이 있다.&lt;/p&gt;
 &lt;h1&gt;더 유사한 것들&lt;/h1&gt;
-&lt;p&gt;Go에는 JavaScript의 개념과 매우 유사한 것들이 많이 있다. 대부분은 같지 않으나 비슷하다. 먼저 우리는 그것들을 알아보는 것에 힘쓰자. 이 시리즈의 1부에선, 우리는 그것들이 어떻게 비슷한 지 살펴보고 주요 차이점도 주목할 것이다.&lt;/p&gt;
+&lt;p&gt;Go에는 JavaScript의 개념과 매우 유사한 것들이 많이 있다. 대부분은 같지 않으나 비슷하다. 먼저 우리는 그것들을 알아보는 것에 힘쓰자. 이 시리즈의 1부에선, 우리는 그것들이 어떻게 비슷한 지 살펴보고 주요 차이점도 주목할 것이다.&lt;/p&gt;
 &lt;h1&gt;Functions&lt;/h1&gt;
 &lt;p&gt;JS와 Go에서 가장 유사한 특징은 functions이다.&lt;/p&gt;
 &lt;h3&gt;유사점&lt;/h3&gt;
@@ -247,7 +247,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;h3&gt;유사점&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;둘 다 function 스코프를 가지며 Functions는 주변 스코프를 기억할 수 있다.&lt;/li&gt;
-&lt;li&gt;둘 다 block 스코프를 가지고 있다.&lt;/li&gt;
+&lt;li&gt;둘 다 block 스코프를 가지고 있다.&lt;/li&gt;
 &lt;li&gt;둘 다 글로벌 스코프를 가지고 있다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;차이점&lt;/h3&gt;
@@ -261,7 +261,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;for&lt;/code&gt; 루프는 둘 다 매우 유사하다.&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;while&lt;/code&gt; 루프는 매우 유사하지만 Go는 동일한 &lt;code class=&quot;language-text&quot;&gt;for&lt;/code&gt; 키워드를 사용한다.&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;forEach&lt;/code&gt; is also similar in functionality but the syntax is quite different.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;forEach&lt;/code&gt;도 기능면에서 비슷하지만 구문은 상당히 다르다.&lt;/li&gt;
 &lt;li&gt;루프에서 break/continue를 할 수 있다. labels을 사용하여 그렇게 할 수도 있다.&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;if/else&lt;/code&gt; 문법은 상당히 비슷하고. Go 버전이 좀 더 강력하다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -381,7 +381,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;h1&gt;결론&lt;/h1&gt;
 &lt;p&gt;1부에서 우리는 두 언어에서 비슷한 개념을 살펴보았다.
 이 시리즈의 다음 편에는 JS와 Go의 더 다른 점을 알아볼 것이다.
-다음 편에는 이것보다 다른 것들이 더 있지만 몇 가지 차이점들은 미묘해서 JavaScript 개발자는 이해하기 쉬울 것이다.&lt;/p&gt;
+다음 편에는 이것보다 다른 것들이 더 있지만 몇 가지 차이점들은 미묘해서 JavaScript 개발자는 이해하기 쉬울 것이다.&lt;/p&gt;
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;p&gt;다음 편에서 살펴볼 것:&lt;/p&gt;
 &lt;ul&gt;
