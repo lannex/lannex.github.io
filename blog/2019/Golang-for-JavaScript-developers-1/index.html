@@ -354,7 +354,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code class="language-text">switch</code> 구문은 비슷하지만 Go는 기본적으로 중단되고 JS는 기본적으로 통과한다.</li>
 <li>Go에서는 그 기능에 대해 <code class="language-text">fallthrough</code> 키워드를 사용할 수 있고, JS에서는 <code class="language-text">break</code> 키워드를 사용할 수 있다.</li>
 <li>JS에는 <code class="language-text">while</code>, <code class="language-text">forEach</code>, <code class="language-text">for in</code> &#x26; <code class="language-text">for of</code> 루프와 같은 더 많은 반복 방법이 있으며, Go에서는 사용할 수 없으나 대부분 for 구문을 사용하여 달성 할 수 있다.</li>
-<li><code class="language-text">if/else</code>는 Go에서 초기화 할당을 가질 수 있다. 아래 코드에서 <code class="language-text">val</code>에 대한 할당은 <code class="language-text">if</code>와 <code class="language-text">else</code>블록 내에서만 스코프를 가지며 그 외부에는 적용되지 않습니다. JS에서는 불가능하다.</li>
+<li><code class="language-text">if/else</code>는 Go에서 초기화 할당을 가질 수 있다. 아래 코드에서 <code class="language-text">val</code>에 대한 할당은 <code class="language-text">if</code>와 <code class="language-text">else</code>블록 내에서만 스코프를 가지며 그 외부에는 적용되지 않는다. JS에서는 불가능하다.</li>
 </ul>
 <h3>Go</h3>
 <div class="gatsby-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">if</span> val <span class="token operator">:=</span> <span class="token function">getVal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> val <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token punctuation">{</span>
