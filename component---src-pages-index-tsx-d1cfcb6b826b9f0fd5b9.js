@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{QeBL:function(n,t,e){"use strict";e.r(t);var u=e("q1tI"),c=e.n(u),o=e("Wbzz");t.default=function(){return c.a.useEffect((function(){Object(o.navigate)("/blog")}),[]),null}}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-d1cfcb6b826b9f0fd5b9.js.map
