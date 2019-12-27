@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Dec 2019 13:51:15 GMT</lastBuildDate><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 2부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 2 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀(a lot…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-2/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-2/</guid><pubDate>Fri, 13 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 27 Dec 2019 05:18:07 GMT</lastBuildDate><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 2부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 2 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-2/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-2/</guid><pubDate>Fri, 13 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://dev.to/deepu105/golang-for-javascript-developers-part-2-p3p&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Golang for JavaScript developers - Part 2&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;시작&lt;/h1&gt;
-&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀&lt;small&gt;(a lot of momentum)&lt;/small&gt;과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
+&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;p&gt;이 포스트는 언어를 비교하는 것이 아니고 그들이 매우 유사하다고 말하고 있다.
 이것은 JavaScript 개발자가 Golang을 빨리 파악할 수 있는 가이드이다.
 Go에는 우리가 다룰 자바스크립트와 완전히 다른 많은 측면들이 있다.&lt;/p&gt;
 &lt;p class=&quot;empty&quot; /&gt;
-&lt;p&gt;이 시리즈의 &lt;a href=&quot;/blog/2019/Golang-for-JavaScript-developers-1/&quot;&gt;이전 편&lt;/a&gt;에서, 우리는 JS와 Go 사이에 더 유사한 것들에 대해 배웠다. 배운 것들:&lt;/p&gt;
+&lt;p&gt;이 시리즈의 &lt;a href=&quot;/blog/2019/Golang-for-JavaScript-developers-1/&quot;&gt;이전 편&lt;/a&gt;에서, 우리는 JS와 Go 사이에 유사한 것들에 대해 배웠다. 배운 것들:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Functions&lt;/li&gt;
 &lt;li&gt;스코프&lt;small&gt;(Scope)&lt;/small&gt;&lt;/li&gt;
@@ -27,11 +27,11 @@ Go에는 우리가 다룰 자바스크립트와 완전히 다른 많은 측면�
 
 &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; bar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; foo&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;token comment&quot;&gt;// 가변 mutate&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 가변&lt;/span&gt;
 bar&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;world&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; bar&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// prints &apos;true&apos;&lt;/span&gt;
 
-&lt;span class=&quot;token comment&quot;&gt;// 재할당 reassign&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 재할당&lt;/span&gt;
 bar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;mars&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -384,10 +384,10 @@ TypeScript 또는 Babel을 사용한 코드 변환&lt;small&gt;(Transpiling)&lt;
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;function&lt;/strong&gt;은 함수라 표기하지 않고 영문 그대로 표기했다.&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 1부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 1 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀(a lot…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</guid><pubDate>Wed, 11 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[JavaScript 개발자를 위한 Golang - 1부(번역)]]></title><description><![CDATA[출처 Golang for JavaScript developers - Part 1 시작 만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang…]]></description><link>https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</link><guid isPermaLink="false">https://lannex.github.io/blog/2019/Golang-for-JavaScript-developers-1/</guid><pubDate>Wed, 11 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://dev.to/deepu105/golang-for-javascript-developers-part-1-38je&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Golang for JavaScript developers - Part 1&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;시작&lt;/h1&gt;
-&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀&lt;small&gt;(a lot of momentum)&lt;/small&gt;과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
+&lt;p&gt;만약 당신이 다른 프로그래밍 언어를 배우는 것에 대해 생각하고 있는 Javascript 개발자라면, Golang은 훌륭한 선택이다. 단순하며 많은 모멘텀과 좋은 성능 그리고 JavaScript와 일부 유사하다.&lt;/p&gt;
 &lt;p class=&quot;empty&quot; /&gt;
 &lt;p&gt;Edit: 어떤 사람이 댓글에서 JS 개발자가 가능한 모든 옵션 중에서 왜 Go를 선택해야 하는지 물었다.
 &lt;a href=&quot;https://dev.to/deepu105/my-love-hate-relationship-with-javascript-3p66&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;내 생각에&lt;/a&gt;, JS는 완벽한 언어가 아니기 때문에 다른 언어를 배우면 JS 개발자가 JS를 더 실용적으로 사용할 수 있게 큰 도움이 될 것이고 기본적인 프로그래밍 개념에 대한 그녀/그의 지식을 강화하는 데도 도움이 될 것이다.
