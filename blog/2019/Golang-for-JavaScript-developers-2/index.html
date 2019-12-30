@@ -189,7 +189,7 @@ JavaScript에서 우리는 둘 중 하나를 할 수 있다.</p>
 <li>콜백 함수<small>(callback functions)</small>에 전달하거나 비동기 함수에 대해 promises를 사용하여 에러를 처리</li>
 </ul>
 <p>Go에서는 <code class="language-text">try / catch</code> 메커니즘이 없으며 에러를 처리하는 유일한 방법은 에러를 function에서 value로 반환하거나 <code class="language-text">panic</code>으로 실행을 중지하는 것이다.
-이것은 Go에서 에러 처리를 매우 장황하게 만들고 Go에서 유명한 <code class="language-text">if err! = nil</code> 문을 자주 보게한다.</p>
+이것은 Go에서 에러 처리를 매우 장황하게 만들고 Go에서 유명한 <code class="language-text">if err != nil</code> 문을 자주 보게한다.</p>
 <h3>JavaScript</h3>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">errorCausingFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">throw</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Oops"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
