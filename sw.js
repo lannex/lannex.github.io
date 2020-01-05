@@ -39,34 +39,14 @@ self.__precacheManifest = [
     "url": "commons-bc017ce94ea2d103e481.js"
   },
   {
-    "url": "app-6a443491d4cb461dba92.js"
+    "url": "app-c1addb9bbbd213b778fa.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-464799f49a8645ba6a44.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "ff5ad98ced3c4fc570aa6aa77ed9e279"
-  },
-  {
-    "url": "google-fonts/s/notosanskr/v12/Pby7FmXiEBPT4ITbgNA5CgmOalv477IR.woff2",
-    "revision": "04e782e08729f3725ae5a9c95da0c8ba"
-  },
-  {
-    "url": "google-fonts/s/notosanskr/v12/Pby7FmXiEBPT4ITbgNA5CgmOelz477IR.woff2",
-    "revision": "4f773a0fce88aa857d70b56c5b0a1d26"
-  },
-  {
-    "url": "google-fonts/s/notosanskr/v12/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
-    "revision": "be09f2ced7ff9fa6eda5f0416e2fc840"
-  },
-  {
-    "url": "google-fonts/s/notoserifkr/v6/3JnmSDn90Gmq2mr3blnHaTZXThRAwOxTNQ.woff2",
-    "revision": "d3562d6d71ef69962cf78a4bd1c49d72"
-  },
-  {
-    "url": "google-fonts/s/sourcecodepro/v11/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevW.woff2",
-    "revision": "982234eca7d717dd9784d15519ece2f8"
+    "revision": "d442c70b918219ed9d43310d72e2cd0b"
   },
   {
     "url": "manifest.webmanifest",
@@ -163,7 +143,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-6a443491d4cb461dba92.js`))) {
+  if (!resources || !(await caches.match(`/app-c1addb9bbbd213b778fa.js`))) {
     return await fetch(event.request)
   }
 
