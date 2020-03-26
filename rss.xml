@@ -1,4 +1,149 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Mar 2020 14:42:35 GMT</lastBuildDate><item><title><![CDATA[70 자바스크립트 인터뷰 질문 - 4부(번역)]]></title><description><![CDATA[출처 70 JavaScript Interview Questions 시작하며 글이 긴 관계로 4부로 나눠서 진행하며 1부는 1-17번 질문, 2부는 18-36번, 3부는 37-54번, 4부는 55-70번 질문으로 구성되어 있다. 7…]]></description><link>https://lannex.github.io/blog/2020/70-JavaScript-Interview-Questions-4/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/70-JavaScript-Interview-Questions-4/</guid><pubDate>Sat, 08 Feb 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Mar 2020 12:05:39 GMT</lastBuildDate><item><title><![CDATA[Redux와 Mobx 어떤 것을 쓸까?]]></title><description><![CDATA[시작 새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
+상태 관리를 React 자체적으로 처리 할 수 있는 Context가 존재하지만 대규모 프로젝트에서는 여전히 Redux나 Mobx…]]></description><link>https://lannex.github.io/blog/2020/redux-mobx/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/redux-mobx/</guid><pubDate>Fri, 06 Mar 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;시작&lt;/h1&gt;
+&lt;p&gt;새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
+상태 관리를 React 자체적으로 처리 할 수 있는 &lt;a href=&quot;https://reactjs.org/docs/context.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Context&lt;/a&gt;가 존재하지만 대규모 프로젝트에서는 여전히 Redux나 Mobx가 유리합니다.&lt;/p&gt;
+&lt;p&gt;이 글에서는 상태 관리 대표주자인 두 라이브러리 Redux와 Mobx를 살펴 보겠습니다.&lt;/p&gt;
+&lt;h1&gt;Redux&lt;/h1&gt;
+&lt;p&gt;Redux는 두말할 것도 없이 가장 유명한 상태 관리 라이브러리로 MVC 패턴의 문제점을 극복하고자 페이스북에서 고안한 Flux 아키텍처를 기반으로 구현되었습니다.&lt;/p&gt;
+&lt;p&gt;Redux 특징으로는 아래와 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;하나의 store를 가짐&lt;/li&gt;
+&lt;li&gt;store의 데이터는 불변성을 가짐&lt;/li&gt;
+&lt;li&gt;action은 데이터 묶음을 reducer로 보내고 reducer는 store를 갱신&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Mobx&lt;/h1&gt;
+&lt;p&gt;Mobx는 Redux보다는 덜 알려졌지만 사용하기 쉽고 강력한 기능으로 꾸준한 성장을 하고 있는 상태 관리 라이브러리입니다.&lt;/p&gt;
+&lt;p&gt;Mobx의 특징은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;여러 개의 store를 가질 수 있음&lt;/li&gt;
+&lt;li&gt;데코레이터로 간략하게 코드 작성&lt;/li&gt;
+&lt;li&gt;유연하고 쉬운 설계&lt;/li&gt;
+&lt;li&gt;store의 observable로 상태를 가지고 action으로 갱신&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;인기&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;npm trends&lt;/strong&gt;에 따르면 2020년 3월 현재 Redux가 Mobx보다 훨씬 더 많은 다운로드 수를 기록하고 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/f1f01/graph.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 45.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABJUlEQVQoz3VRi3LDIAzL/3/prl1akmDeoFmmzbqt404nYxkjw+Kcw/V6xbquCCFg33fbb9uGMQZyG6itYdRkey7SI/yzlpzzWfhzDc13rNLgJaAfF9RacXZUvfWOVDtimSy5Y6GTlOIsUCe1saAhawEbcl+7Nrc+PNQQFDep+PTV2IXJ1BaOeffJnDD5xKq4HDO+HMUu86lh1SZbbHZpV4c08nRMNocSojlq6oZjYHQTc21aqOOU2WyP1WqYo1s2ZP0rm8NaijUYmhgPgeAh7vkpH3vBXd2+6r9BbeGvppTtjfSp3oIT2W9P4//WEfbLRRyG3NDD/T1UG+nAiJvFXZ75ySO4GccdCx9b/IGgiOKNg8w4ysxTj4dD9Nt3/qGd7HXSIPgCy+vBe9wU8EMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;graph&quot;
+        title=&quot;graph&quot;
+        src=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png&quot;
+        srcset=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/04472/graph.png 170w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/9f933/graph.png 340w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png 680w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/b12f7/graph.png 1020w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/b5a09/graph.png 1360w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/f1f01/graph.png 2212w&quot;
+        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;매년 발표하는 &lt;a href=&quot;https://2019.stateofjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;State of JavaScript&lt;/a&gt;의 2019년 조사에서도 Redux가 더 높은 수치를 가지고 있습니다.&lt;/p&gt;
+&lt;h5&gt;Redux&lt;/h5&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/e04e6/redux.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.23529411764706%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPklEQVQoz12SyU9TYRTF3z9BnRI7QN/QvteBV/qKrcQ40DJYa0GMceFG0zIUbEwTjNFYQ0jY6o4hAWKtuiCxtgi0gQVajLg3xoV/gXt3x/O1qTEufrn3u+d+33vJOVIoHIXVPwBRg2YEZqgfuhVDKBJDnxVFoNeCq0dDt9vzH144Odf0IGIDlxGOnOd9C5LHZ0L2BqCxKqwqF1TWs04Zjm4VDpcKu0tp4SBi3uk7OP/pJZMPBDUDpsePXhLQfLCCYVj8M0PR4aNmdFAN9FHzc0/0Bnd14hGa0QvDb0JaaNQxV6lgulrFvVoNt0lhfx/Fw0Okd3YwvruLNEmRa3t7mKd2o9HAYL2OOBnibJBalrPZ/ANIl75/Q/TrMS4ef0H88xESnz5i+qiJp80m7vLCHJcLH7bxqFbFQvU9SgcHWK68w/LbN3j1uoytUgnbG+tolsuYykxB+vHiOX4+K+LXk8f4/XAeyN8HikVgaQmYmQFmc0Au1+4Fi4vcyQPZLDA52SaTAQoF3BmbgLQ1mkTpShwvE8PYHBrBeoKk0tgcn8Da8CjWRq7+ZXUkiY2bt7CaTGGF5xXebSH062O4wGRIXXTR1kJBFx20kTOMg+CEw42TnJ+i26La7G7YaVRLE7vU21XGae4oNEg6RzdFBr10O0Ssvn6YxEMnFeZKZNEMRaDQVZ29xbzpdFTl2WRuNe7pvCfzQyKvksZXRTjdHChELGjMofhaj9DYu2W9FWaZmpePid0e2QuVZ1FbMOhi/ge6tYnOtoL8UgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;redux&quot;
+        title=&quot;redux&quot;
+        src=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png&quot;
+        srcset=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/04472/redux.png 170w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/9f933/redux.png 340w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png 680w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/b12f7/redux.png 1020w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/b5a09/redux.png 1360w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/e04e6/redux.png 2152w&quot;
+        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h5&gt;Mobx&lt;/h5&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/de9fe/mobx.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.64705882352941%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPUlEQVQoz2WSyU9TYRTF358hokDb1zfTgba0TJroykQWmkCAlUYiAalVKdaYFlkY0J2yNCZG4wah0IHiwpi40MhUhkgFgZYS/5Dj+WppTFz8ct493703L7lHag11Ith2AV5/CP7WdviCHTCpwg8EO+HyBGCXdTicxn8IX9Ga0dF1GaH2i5UdkmF5oeouCNUMN3TTA53aaFPQZFeraH/Vof3ja7V34Z36tYVikVioEsvlq+BULTj5B6fIrC23Hxp7xbcsvCoK54QvZXM5fJibw3wyiaRgfh6pxUVkMxmk+J2ukqmynE4jt7CALGeWSI5kZ2fxOZtFeDQCqbi9hZ1vX7G98h351RWsra1ifWMd65t5fMlv4BP149YmltiX2tnGcmEXSfJ+9wfe/SzgzV4Br6hvy8cYjMYgvf59gif7e3h0eIB7Rwe4VTxErHSEp2zoK5cwcFxCP+kjPfQmT8oYpl5n3Vsqoof9137t4yb3jEw/h3R16hkuJSZwJZ5A9+M4usdjuD01jdjLGfRGx9EffUjGMTBGHkSReDGD8MQkboQjGIrcx53RuwgPDSM+FsXg0Agk5Wwj9LpGaHUNUKoYTU7ovKjzzHko9U1Qz9kqKrM2GRedF5VZ2znrqLfBThwNDhjiKAFfCB5mT3W1wMvL+phBt7+tcm1ZvIW64KXnFAmgtjCfFrMpMxke0WcxZs0tUFjbmEvJYKNJQ0RE0yyYjJGIksiiGDJEM2MhgiyWNjM2ImYO2aj0iDlZMWv8AXI6nOnQD5GyAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;mobx&quot;
+        title=&quot;mobx&quot;
+        src=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png&quot;
+        srcset=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/04472/mobx.png 170w,
+/static/feb47898099f2bec7c74bd0e4fdec200/9f933/mobx.png 340w,
+/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png 680w,
+/static/feb47898099f2bec7c74bd0e4fdec200/b12f7/mobx.png 1020w,
+/static/feb47898099f2bec7c74bd0e4fdec200/b5a09/mobx.png 1360w,
+/static/feb47898099f2bec7c74bd0e4fdec200/de9fe/mobx.png 2146w&quot;
+        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1&gt;상태&lt;/h1&gt;
+&lt;p&gt;Redux는 상태를 저장하기 위한 데이터 구조로 자바 스크립트 객체가 있으며 업데이트를 수동으로 해야합니다.&lt;/p&gt;
+&lt;p&gt;반면에 Mobx는 observer를 통해 변경 사항을 자동으로 추적합니다. 즉, 업데이트가 자동으로 추적되므로 더 쉽게 사용할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;성능 면에서는 앞서거니 뒤서거니 하는 얘기가 있지만 둘 다 사용해본 바로는 사실 큰 차이가 없습니다.&lt;/p&gt;
+&lt;h1&gt;불변성, 가변성&lt;/h1&gt;
+&lt;p&gt;Redux는 함수형 프로그래밍 개념을 사용했습니다. 그것의 핵심 원칙으로 Redux에서 store의 상태는 변경할 수 없으므로 모든 상태가 읽기 전용입니다.&lt;/p&gt;
+&lt;p&gt;Mobx에서 상태는 변경 가능하므로 상태를 다른 새로운 값으로 간단하게 업데이트 할 수 있습니다.
+이것은 Mobx에서 부작용을 낳을 수 있습니다. Mobx에서 함수는 항상 예측 가능한 출력을 반환하지는 않으므로 테스트 및 유지 관리가 더 어렵습니다.&lt;/p&gt;
+&lt;h1&gt;학습&lt;/h1&gt;
+&lt;p&gt;OOP와 MVC가 기본인 개발자 세상에서 Flux 아키텍처와 Redux 패턴 등을 학습한다는 것은 제법 시간이 드는 일이 될 수 있습니다.&lt;/p&gt;
+&lt;p&gt;Mobx는 배우기 쉽고 학습 곡선이 낮습니다. OOP 개념을 알고 있다면 Mobx를 쉽게 배울 수 있습니다.&lt;/p&gt;
+&lt;h1&gt;추가 라이브러리&lt;/h1&gt;
+&lt;p&gt;Mobx를 사용하겠다면 Mobx에 정확한 데이터 관리 및 불변성을 더해주는 &lt;a href=&quot;https://mobx-state-tree.js.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Mobx State Tree&lt;/a&gt; 사용을 고려해 보시길 바랍니다.&lt;/p&gt;
+&lt;p&gt;Redux경우는 다양한 미들웨어, 특히 비동기 데이터 관리인 &lt;a href=&quot;https://github.com/redux-saga/redux-saga&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Redux-Saga&lt;/a&gt;나 &lt;a href=&quot;https://github.com/reduxjs/redux-thunk&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Redux-Thunk&lt;/a&gt;는 필수에 가깝습니다.&lt;/p&gt;
+&lt;h1&gt;결론&lt;/h1&gt;
+&lt;p&gt;만약 상태 관리 라이브러리를 사용해 보지 않았다면 간단하고 배우기 쉽운 Mobx를 추천합니다.
+또한 Mobx는 많은 추상화로 이루어져 있어서 Redux에 비해 더 적은 코드를 작성합니다.
+물론 최근에는 Redux든 Mobx든 hook을 지원하기에 작성해야 될 코드양은 예전보다 훨씬 많이 줄었습니다.&lt;/p&gt;
+&lt;p&gt;처음 추천하는 바는 Mobx이지만 이후 널리 사용되는 Redux도 꼭 사용해 보시길 바랍니다.
+Redux는 인기만큼이나 쉽게 찾을 수 있는 레퍼런스들과 편리한 개발도구, 많은 추가 라이브러리로 오히려 Redux가 본인에게 잘 맞을 수도 있습니다.&lt;/p&gt;
+&lt;p&gt;저의 경우에는 보통 단기 프로젝트는 Mobx를, 장기 프로젝트는 Redux를 사용합니다.
+결국 둘 다 작업하기에 훌륭한 라이브러리이며 리소스의 요구 사항 및 상황에 따라 선택할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;그럼 오늘도 열심히 공부합시다!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[70 자바스크립트 인터뷰 질문 - 4부(번역)]]></title><description><![CDATA[출처 70 JavaScript Interview Questions 시작하며 글이 긴 관계로 4부로 나눠서 진행하며 1부는 1-17번 질문, 2부는 18-36번, 3부는 37-54번, 4부는 55-70번 질문으로 구성되어 있다. 7…]]></description><link>https://lannex.github.io/blog/2020/70-JavaScript-Interview-Questions-4/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/70-JavaScript-Interview-Questions-4/</guid><pubDate>Sat, 08 Feb 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;출처&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://dev.to/macmacky/70-javascript-interview-questions-5gfi&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;70 JavaScript Interview Questions&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;시작하며&lt;/h1&gt;
 &lt;p&gt;글이 긴 관계로 4부로 나눠서 진행하며 1부는 1-17번 질문, 2부는 18-36번, 3부는 37-54번, 4부는 55-70번 질문으로 구성되어 있다.&lt;/p&gt;

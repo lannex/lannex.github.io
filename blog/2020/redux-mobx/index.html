@@ -14,7 +14,7 @@
       
       
       
-      }</script><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="icon" href="/icons/icon-48x48.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#ffffff"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c8ec386d4f50151441db934dd9f89192"/><title data-react-helmet="true">Optional Chaining, Nullish Coalescing</title><meta data-react-helmet="true" name="title" content="Optional Chaining, Nullish Coalescing"/><meta data-react-helmet="true" name="description" content="Typescript 3.7 업데이트 후 필수가 되어버린 문법"/><meta data-react-helmet="true" property="og:title" content="Optional Chaining, Nullish Coalescing"/><meta data-react-helmet="true" property="og:description" content="Typescript 3.7 업데이트 후 필수가 되어버린 문법"/><meta data-react-helmet="true" property="og:url" content="https://lannex.github.io"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="lannex"/><meta data-react-helmet="true" name="twitter:title" content="Optional Chaining, Nullish Coalescing"/><meta data-react-helmet="true" name="twitter:description" content="Typescript 3.7 업데이트 후 필수가 되어버린 문법"/><meta data-react-helmet="true" name="naver-site-verification" content="5a46498e5ab694b2a83222ce7ee9327dbc9e9d47"/><style data-styled="" data-styled-version="5.0.1">.geHQao{z-index:10;left:0;width:100%;-webkit-transition:top 0.35s;transition:top 0.35s;background-color:#fff;will-change:top;}
+      }</script><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="icon" href="/icons/icon-48x48.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#ffffff"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c8ec386d4f50151441db934dd9f89192"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c8ec386d4f50151441db934dd9f89192"/><title data-react-helmet="true">Redux와 Mobx 어떤 것을 쓸까?</title><meta data-react-helmet="true" name="title" content="Redux와 Mobx 어떤 것을 쓸까?"/><meta data-react-helmet="true" name="description" content="Redux vs Mobx"/><meta data-react-helmet="true" property="og:title" content="Redux와 Mobx 어떤 것을 쓸까?"/><meta data-react-helmet="true" property="og:description" content="Redux vs Mobx"/><meta data-react-helmet="true" property="og:url" content="https://lannex.github.io"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="lannex"/><meta data-react-helmet="true" name="twitter:title" content="Redux와 Mobx 어떤 것을 쓸까?"/><meta data-react-helmet="true" name="twitter:description" content="Redux vs Mobx"/><meta data-react-helmet="true" name="naver-site-verification" content="5a46498e5ab694b2a83222ce7ee9327dbc9e9d47"/><style data-styled="" data-styled-version="5.0.1">.geHQao{z-index:10;left:0;width:100%;-webkit-transition:top 0.35s;transition:top 0.35s;background-color:#fff;will-change:top;}
 .geHQao > div{max-width:680px;}
 data-styled.g1[id="Header__StyledHeader-brmb1f-0"]{content:"geHQao,"}
 .gkdtWE{max-width:680px;margin:auto;}
@@ -22,71 +22,148 @@ data-styled.g1[id="Header__StyledHeader-brmb1f-0"]{content:"geHQao,"}
 .gkdtWE nav .nav__prev a,.gkdtWE nav .nav__next a{-webkit-transition:0.35s color;transition:0.35s color;color:#a0aec0;font-size:0.875rem;}
 .gkdtWE nav .nav__prev a:hover,.gkdtWE nav .nav__next a:hover{color:#2d3748;}
 data-styled.g2[id="BlogPost__StyledBlogPostTemplate-sc-1528t6i-0"]{content:"gkdtWE,"}
-</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-d982a18daadbbee5df42.js"/><link as="script" rel="preload" href="/styles-0adfb614f50665d6b684.js"/><link as="script" rel="preload" href="/app-bcad15ce14cfb9969c6b.js"/><link as="script" rel="preload" href="/commons-9978c19447d7ba4a79c6.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js"/><link as="fetch" rel="preload" href="/page-data/blog/2019/Typescript-3-7/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="container mx-auto px-4 md:px-0"><header style="position:fixed;top:0" class="Header__StyledHeader-brmb1f-0 geHQao"><div class="flex items-center justify-between mx-auto p-4 md:px-0"><div><a href="/blog"><img style="width:93px;height:21px" src="/logo.png" alt="logo"/></a></div><div class="sm:hidden"><button class="focus:outline-none" type="button"><i class="bx bx-menu-alt-right text-gray-500 text-2xl"></i></button></div><div class="hidden sm:flex items-center"><a class="mr-2" href="/resume"><i class="relative z-0 bx bx-user-circle text-2xl text-gray-500" title="resume"></i></a><a class="mr-2" href="https://github.com/lannex" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bxl-github text-2xl text-gray-500" title="github"></i></a><a class="mr-2" href="https://stackshare.io/lannex/lannex" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bx-share-alt text-2xl text-gray-500" title="stackshare"></i></a><a href="https://www.instagram.com/jimseung_/" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bxl-instagram text-2xl text-gray-500" title="instagram"></i></a></div></div></header><main class="mx-auto mt-20"><div class="BlogPost__StyledBlogPostTemplate-sc-1528t6i-0 gkdtWE"><article><header><h1 class="font-display-serif text-5xl">Optional Chaining, Nullish Coalescing</h1><h2 class="mt-3 text-gray-700 text-lg">Typescript 3.7 업데이트 후 필수가 되어버린 문법</h2><p class="mt-3 text-xs text-gray-500">typescript, vscode</p><p class="mt-1 text-xs text-gray-500">December 01, 2019</p></header><hr class="mt-3 border-dashed"/><section class="remark"><h1>한 달</h1>
-<p>어느덧 Typescript 3.7이 배포된 지 한 달가량이 되었다. 여러 기능적인 면에서 많은 업데이트가 되었는데 그중 가장 많이 또 만족스럽게 사용 중인 Optional Chaining, Nullish Coalescing을 소개하고자 한다.</p>
-<h1>Optional Chaining</h1>
-<blockquote>
-<p>At its core, optional chaining lets us write code where TypeScript can immediately stop running some expressions if we run into a null or undefined.</p>
-</blockquote>
-<p>3.7로 업데이트 이후 가장 많이, 그리고 유용하게 사용하는 문법이다. 간단하게 말하자면 코드가 길어지는 객체 체크를 짧게 표현할 수 있도록 만들었다.</p>
-<p>예를들어 하단과 같은 코드가 있을 때</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> Abc <span class="token operator">=</span> <span class="token punctuation">{</span>
-  abcContent<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    abcList<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      abcItems<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> abc<span class="token operator">:</span> Abc <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>하위에 있는 값에 접근하려면 기존에는 이렇게 체크를 해야 했었다.</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// Before</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>abcContent <span class="token operator">&amp;&amp;</span> abcContent<span class="token punctuation">.</span>abcList <span class="token operator">&amp;&amp;</span> abcContent<span class="token punctuation">.</span>abcList<span class="token punctuation">.</span>abcItems<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>짧을 경우에는 상관이 없는데 보통은 그렇지가 않은 경우가 많다.
-이것을 Optional Chaining이 정말 간단하게 만들었다!</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// After - Optional Chaining</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>abcContent<span class="token operator">?.</span>abcList<span class="token operator">?.</span>abcItems<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>또 이것을 실행에 대입하면</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">getItem</span><span class="token punctuation">(</span><span class="token parameter">items<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> index<span class="token operator">:</span> <span class="token builtin">number</span></span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> items<span class="token operator">?.</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// b</span>
-<span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span></code></pre></div>
-<p>이런 식으로도 사용할 수 있다.</p>
-<p>주의할 점이 있다면 기존 객체 체크에서는 <code class="language-text">falsy</code>값이 <code class="language-text">&#39;&#39;, 0, NaN, false, null, undefined</code>인 데 반면  <code class="language-text">?.</code>는 <code class="language-text">null, undefined</code>라는 것이다.</p>
-<h1>Nullish Coalescing</h1>
-<p>Optional Chaining 과 비슷하게 <code class="language-text">??</code>를 사용해서 <code class="language-text">null, undefined</code>를 확인하고 실행하는 문법이다.</p>
-<p><code class="language-text">||</code> 연산자와의 차이점은 <code class="language-text">falsy</code>체크에 있다.</p>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// ||</span>
-<span class="token keyword">const</span> test <span class="token operator">=</span> foo <span class="token operator">||</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// same</span>
-<span class="token keyword">const</span> test <span class="token operator">=</span>
-  foo <span class="token operator">!==</span> <span class="token string">""</span> <span class="token operator">&amp;&amp;</span>
-  foo <span class="token operator">!==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>
-  foo <span class="token operator">!==</span> <span class="token number">NaN</span> <span class="token operator">&amp;&amp;</span>
-  foo <span class="token operator">!==</span> <span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span>
-  foo <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span>
-  foo <span class="token operator">!==</span> <span class="token keyword">undefined</span>
-    <span class="token operator">?</span> foo
-    <span class="token operator">:</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// ??</span>
-<span class="token keyword">const</span> test <span class="token operator">=</span> foo <span class="token operator">??</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// same</span>
-<span class="token keyword">const</span> test <span class="token operator">=</span> foo <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> foo <span class="token operator">!==</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> foo <span class="token operator">:</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>가끔은 <code class="language-text">&#39;&#39;</code>처럼 빈값도 체크해야되는 경우가 있는데 그럴때 매우 유용한 문법이다.</p>
-<h1>그밖에</h1>
-<p>Node.js의 assert와 같은 Assertion Functions이나 Recursive Type Aliases 등이 추가되었으나 Optional Chaining, Nullish Coalescing 두 개만 해도 괄목할만한 업데이트라고 생각이 든다.
-<small>(정말 많이 사용하게 될 터)</small></p>
-<p>더욱 자세한 추가점은 릴리즈 노트를 참고하자.</p>
-<p><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html" target="_blank" rel="nofollow noopener noreferrer">3.7 Relese Note</a></p>
-<h1>VSCode에서 Typescript 3.7 인식이 안될 경우</h1>
-<p>VSCode를 사용한다면 Typescript 기본값이 3.6 버전대로 되어 있을 공산이 크다. <small>(현재날짜 기준)</small></p>
-<p>그럴 땐 간단하게 우측하단에 Typescript 버전을 클릭하여 작업영역 버전 사용을 하면 해결된다.</p>
-<p><a href="https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions" target="_blank" rel="nofollow noopener noreferrer">using-newer-typescript-versions</a></p></section></article><hr class="mt-16 border-dashed"/><nav><div class="flex flex-wrap justify-between py-12"><div class="nav__prev"><a rel="prev" href="/blog/2019/The-beginning-of-writing/"><i class="bx bx-chevron-left"></i><span>글쓰기라는 시작</span></a></div><div class="nav__next"><a rel="next" href="/blog/2019/TSLint-deprecated/"><span>TSLint에서 ESLint로</span><i class="bx bx-chevron-right"></i></a></div></div></nav><section></section></div></main><footer></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/2019/Typescript-3-7/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-bcad15ce14cfb9969c6b.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-12f868975ff409ee66fd.js"],"component---src-templates-blog-post-tsx":["/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js"],"component---src-templates-blog-list-tsx":["/component---src-templates-blog-list-tsx-8cd2c9a074fab47b23cb.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-440fb7ecb6cd8d1eddd4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-fa69d00734db9a49ab6b.js"],"component---src-pages-resume-tsx":["/component---src-pages-resume-tsx-586ba190ccf3038c4760.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js" async=""></script><script src="/commons-9978c19447d7ba4a79c6.js" async=""></script><script src="/app-bcad15ce14cfb9969c6b.js" async=""></script><script src="/styles-0adfb614f50665d6b684.js" async=""></script><script src="/webpack-runtime-d982a18daadbbee5df42.js" async=""></script></body></html>
+</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-d982a18daadbbee5df42.js"/><link as="script" rel="preload" href="/styles-0adfb614f50665d6b684.js"/><link as="script" rel="preload" href="/app-bcad15ce14cfb9969c6b.js"/><link as="script" rel="preload" href="/commons-9978c19447d7ba4a79c6.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js"/><link as="fetch" rel="preload" href="/page-data/blog/2020/redux-mobx/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="container mx-auto px-4 md:px-0"><header style="position:fixed;top:0" class="Header__StyledHeader-brmb1f-0 geHQao"><div class="flex items-center justify-between mx-auto p-4 md:px-0"><div><a href="/blog"><img style="width:93px;height:21px" src="/logo.png" alt="logo"/></a></div><div class="sm:hidden"><button class="focus:outline-none" type="button"><i class="bx bx-menu-alt-right text-gray-500 text-2xl"></i></button></div><div class="hidden sm:flex items-center"><a class="mr-2" href="/resume"><i class="relative z-0 bx bx-user-circle text-2xl text-gray-500" title="resume"></i></a><a class="mr-2" href="https://github.com/lannex" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bxl-github text-2xl text-gray-500" title="github"></i></a><a class="mr-2" href="https://stackshare.io/lannex/lannex" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bx-share-alt text-2xl text-gray-500" title="stackshare"></i></a><a href="https://www.instagram.com/jimseung_/" target="_blank" rel="noreferrer noopener"><i class="relative z-0 bx bxl-instagram text-2xl text-gray-500" title="instagram"></i></a></div></div></header><main class="mx-auto mt-20"><div class="BlogPost__StyledBlogPostTemplate-sc-1528t6i-0 gkdtWE"><article><header><h1 class="font-display-serif text-5xl">Redux와 Mobx 어떤 것을 쓸까?</h1><h2 class="mt-3 text-gray-700 text-lg">Redux vs Mobx</h2><p class="mt-3 text-xs text-gray-500">javascript, react</p><p class="mt-1 text-xs text-gray-500">March 06, 2020</p></header><hr class="mt-3 border-dashed"/><section class="remark"><h1>시작</h1>
+<p>새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
+상태 관리를 React 자체적으로 처리 할 수 있는 <a href="https://reactjs.org/docs/context.html" target="_blank" rel="nofollow noopener noreferrer">Context</a>가 존재하지만 대규모 프로젝트에서는 여전히 Redux나 Mobx가 유리합니다.</p>
+<p>이 글에서는 상태 관리 대표주자인 두 라이브러리 Redux와 Mobx를 살펴 보겠습니다.</p>
+<h1>Redux</h1>
+<p>Redux는 두말할 것도 없이 가장 유명한 상태 관리 라이브러리로 MVC 패턴의 문제점을 극복하고자 페이스북에서 고안한 Flux 아키텍처를 기반으로 구현되었습니다.</p>
+<p>Redux 특징으로는 아래와 같습니다.</p>
+<ul>
+<li>하나의 store를 가짐</li>
+<li>store의 데이터는 불변성을 가짐</li>
+<li>action은 데이터 묶음을 reducer로 보내고 reducer는 store를 갱신</li>
+</ul>
+<h1>Mobx</h1>
+<p>Mobx는 Redux보다는 덜 알려졌지만 사용하기 쉽고 강력한 기능으로 꾸준한 성장을 하고 있는 상태 관리 라이브러리입니다.</p>
+<p>Mobx의 특징은 다음과 같습니다.</p>
+<ul>
+<li>여러 개의 store를 가질 수 있음</li>
+<li>데코레이터로 간략하게 코드 작성</li>
+<li>유연하고 쉬운 설계</li>
+<li>store의 observable로 상태를 가지고 action으로 갱신</li>
+</ul>
+<h1>인기</h1>
+<p><strong>npm trends</strong>에 따르면 2020년 3월 현재 Redux가 Mobx보다 훨씬 더 많은 다운로드 수를 기록하고 있습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1702dea61dfddd4ae4f6e9f4688c446b/f1f01/graph.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 45.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABJUlEQVQoz3VRi3LDIAzL/3/prl1akmDeoFmmzbqt404nYxkjw+Kcw/V6xbquCCFg33fbb9uGMQZyG6itYdRkey7SI/yzlpzzWfhzDc13rNLgJaAfF9RacXZUvfWOVDtimSy5Y6GTlOIsUCe1saAhawEbcl+7Nrc+PNQQFDep+PTV2IXJ1BaOeffJnDD5xKq4HDO+HMUu86lh1SZbbHZpV4c08nRMNocSojlq6oZjYHQTc21aqOOU2WyP1WqYo1s2ZP0rm8NaijUYmhgPgeAh7vkpH3vBXd2+6r9BbeGvppTtjfSp3oIT2W9P4//WEfbLRRyG3NDD/T1UG+nAiJvFXZ75ySO4GccdCx9b/IGgiOKNg8w4ysxTj4dD9Nt3/qGd7HXSIPgCy+vBe9wU8EMAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph"
+        title="graph"
+        src="/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png"
+        srcset="/static/1702dea61dfddd4ae4f6e9f4688c446b/04472/graph.png 170w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/9f933/graph.png 340w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png 680w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/b12f7/graph.png 1020w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/b5a09/graph.png 1360w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/f1f01/graph.png 2212w"
+        sizes="(max-width: 680px) 100vw, 680px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>매년 발표하는 <a href="https://2019.stateofjs.com/" target="_blank" rel="nofollow noopener noreferrer">State of JavaScript</a>의 2019년 조사에서도 Redux가 더 높은 수치를 가지고 있습니다.</p>
+<h5>Redux</h5>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8165f68ea5f8478ce733a82b9f9e06d9/e04e6/redux.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.23529411764706%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPklEQVQoz12SyU9TYRTF3z9BnRI7QN/QvteBV/qKrcQ40DJYa0GMceFG0zIUbEwTjNFYQ0jY6o4hAWKtuiCxtgi0gQVajLg3xoV/gXt3x/O1qTEufrn3u+d+33vJOVIoHIXVPwBRg2YEZqgfuhVDKBJDnxVFoNeCq0dDt9vzH144Odf0IGIDlxGOnOd9C5LHZ0L2BqCxKqwqF1TWs04Zjm4VDpcKu0tp4SBi3uk7OP/pJZMPBDUDpsePXhLQfLCCYVj8M0PR4aNmdFAN9FHzc0/0Bnd14hGa0QvDb0JaaNQxV6lgulrFvVoNt0lhfx/Fw0Okd3YwvruLNEmRa3t7mKd2o9HAYL2OOBnibJBalrPZ/ANIl75/Q/TrMS4ef0H88xESnz5i+qiJp80m7vLCHJcLH7bxqFbFQvU9SgcHWK68w/LbN3j1uoytUgnbG+tolsuYykxB+vHiOX4+K+LXk8f4/XAeyN8HikVgaQmYmQFmc0Au1+4Fi4vcyQPZLDA52SaTAQoF3BmbgLQ1mkTpShwvE8PYHBrBeoKk0tgcn8Da8CjWRq7+ZXUkiY2bt7CaTGGF5xXebSH062O4wGRIXXTR1kJBFx20kTOMg+CEw42TnJ+i26La7G7YaVRLE7vU21XGae4oNEg6RzdFBr10O0Ssvn6YxEMnFeZKZNEMRaDQVZ29xbzpdFTl2WRuNe7pvCfzQyKvksZXRTjdHChELGjMofhaj9DYu2W9FWaZmpePid0e2QuVZ1FbMOhi/ge6tYnOtoL8UgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="redux"
+        title="redux"
+        src="/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png"
+        srcset="/static/8165f68ea5f8478ce733a82b9f9e06d9/04472/redux.png 170w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/9f933/redux.png 340w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png 680w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/b12f7/redux.png 1020w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/b5a09/redux.png 1360w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/e04e6/redux.png 2152w"
+        sizes="(max-width: 680px) 100vw, 680px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h5>Mobx</h5>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 680px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/feb47898099f2bec7c74bd0e4fdec200/de9fe/mobx.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 47.64705882352941%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPUlEQVQoz2WSyU9TYRTF358hokDb1zfTgba0TJroykQWmkCAlUYiAalVKdaYFlkY0J2yNCZG4wah0IHiwpi40MhUhkgFgZYS/5Dj+WppTFz8ct493703L7lHag11Ith2AV5/CP7WdviCHTCpwg8EO+HyBGCXdTicxn8IX9Ga0dF1GaH2i5UdkmF5oeouCNUMN3TTA53aaFPQZFeraH/Vof3ja7V34Z36tYVikVioEsvlq+BULTj5B6fIrC23Hxp7xbcsvCoK54QvZXM5fJibw3wyiaRgfh6pxUVkMxmk+J2ukqmynE4jt7CALGeWSI5kZ2fxOZtFeDQCqbi9hZ1vX7G98h351RWsra1ifWMd65t5fMlv4BP149YmltiX2tnGcmEXSfJ+9wfe/SzgzV4Br6hvy8cYjMYgvf59gif7e3h0eIB7Rwe4VTxErHSEp2zoK5cwcFxCP+kjPfQmT8oYpl5n3Vsqoof9137t4yb3jEw/h3R16hkuJSZwJZ5A9+M4usdjuD01jdjLGfRGx9EffUjGMTBGHkSReDGD8MQkboQjGIrcx53RuwgPDSM+FsXg0Agk5Wwj9LpGaHUNUKoYTU7ovKjzzHko9U1Qz9kqKrM2GRedF5VZ2znrqLfBThwNDhjiKAFfCB5mT3W1wMvL+phBt7+tcm1ZvIW64KXnFAmgtjCfFrMpMxke0WcxZs0tUFjbmEvJYKNJQ0RE0yyYjJGIksiiGDJEM2MhgiyWNjM2ImYO2aj0iDlZMWv8AXI6nOnQD5GyAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="mobx"
+        title="mobx"
+        src="/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png"
+        srcset="/static/feb47898099f2bec7c74bd0e4fdec200/04472/mobx.png 170w,
+/static/feb47898099f2bec7c74bd0e4fdec200/9f933/mobx.png 340w,
+/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png 680w,
+/static/feb47898099f2bec7c74bd0e4fdec200/b12f7/mobx.png 1020w,
+/static/feb47898099f2bec7c74bd0e4fdec200/b5a09/mobx.png 1360w,
+/static/feb47898099f2bec7c74bd0e4fdec200/de9fe/mobx.png 2146w"
+        sizes="(max-width: 680px) 100vw, 680px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h1>상태</h1>
+<p>Redux는 상태를 저장하기 위한 데이터 구조로 자바 스크립트 객체가 있으며 업데이트를 수동으로 해야합니다.</p>
+<p>반면에 Mobx는 observer를 통해 변경 사항을 자동으로 추적합니다. 즉, 업데이트가 자동으로 추적되므로 더 쉽게 사용할 수 있습니다.</p>
+<p>성능 면에서는 앞서거니 뒤서거니 하는 얘기가 있지만 둘 다 사용해본 바로는 사실 큰 차이가 없습니다.</p>
+<h1>불변성, 가변성</h1>
+<p>Redux는 함수형 프로그래밍 개념을 사용했습니다. 그것의 핵심 원칙으로 Redux에서 store의 상태는 변경할 수 없으므로 모든 상태가 읽기 전용입니다.</p>
+<p>Mobx에서 상태는 변경 가능하므로 상태를 다른 새로운 값으로 간단하게 업데이트 할 수 있습니다.
+이것은 Mobx에서 부작용을 낳을 수 있습니다. Mobx에서 함수는 항상 예측 가능한 출력을 반환하지는 않으므로 테스트 및 유지 관리가 더 어렵습니다.</p>
+<h1>학습</h1>
+<p>OOP와 MVC가 기본인 개발자 세상에서 Flux 아키텍처와 Redux 패턴 등을 학습한다는 것은 제법 시간이 드는 일이 될 수 있습니다.</p>
+<p>Mobx는 배우기 쉽고 학습 곡선이 낮습니다. OOP 개념을 알고 있다면 Mobx를 쉽게 배울 수 있습니다.</p>
+<h1>추가 라이브러리</h1>
+<p>Mobx를 사용하겠다면 Mobx에 정확한 데이터 관리 및 불변성을 더해주는 <a href="https://mobx-state-tree.js.org/" target="_blank" rel="nofollow noopener noreferrer">Mobx State Tree</a> 사용을 고려해 보시길 바랍니다.</p>
+<p>Redux경우는 다양한 미들웨어, 특히 비동기 데이터 관리인 <a href="https://github.com/redux-saga/redux-saga" target="_blank" rel="nofollow noopener noreferrer">Redux-Saga</a>나 <a href="https://github.com/reduxjs/redux-thunk" target="_blank" rel="nofollow noopener noreferrer">Redux-Thunk</a>는 필수에 가깝습니다.</p>
+<h1>결론</h1>
+<p>만약 상태 관리 라이브러리를 사용해 보지 않았다면 간단하고 배우기 쉽운 Mobx를 추천합니다.
+또한 Mobx는 많은 추상화로 이루어져 있어서 Redux에 비해 더 적은 코드를 작성합니다.
+물론 최근에는 Redux든 Mobx든 hook을 지원하기에 작성해야 될 코드양은 예전보다 훨씬 많이 줄었습니다.</p>
+<p>처음 추천하는 바는 Mobx이지만 이후 널리 사용되는 Redux도 꼭 사용해 보시길 바랍니다.
+Redux는 인기만큼이나 쉽게 찾을 수 있는 레퍼런스들과 편리한 개발도구, 많은 추가 라이브러리로 오히려 Redux가 본인에게 잘 맞을 수도 있습니다.</p>
+<p>저의 경우에는 보통 단기 프로젝트는 Mobx를, 장기 프로젝트는 Redux를 사용합니다.
+결국 둘 다 작업하기에 훌륭한 라이브러리이며 리소스의 요구 사항 및 상황에 따라 선택할 수 있습니다.</p>
+<p>그럼 오늘도 열심히 공부합시다!</p></section></article><hr class="mt-16 border-dashed"/><nav><div class="flex flex-wrap justify-between py-12"><div class="nav__prev"><a rel="prev" href="/blog/2020/70-JavaScript-Interview-Questions-4/"><i class="bx bx-chevron-left"></i><span>70 자바스크립트 인터뷰 질문 - 4부(번역)</span></a></div><div class="nav__next"></div></div></nav><section></section></div></main><footer></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/2020/redux-mobx/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-bcad15ce14cfb9969c6b.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-12f868975ff409ee66fd.js"],"component---src-templates-blog-post-tsx":["/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js"],"component---src-templates-blog-list-tsx":["/component---src-templates-blog-list-tsx-8cd2c9a074fab47b23cb.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-440fb7ecb6cd8d1eddd4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-fa69d00734db9a49ab6b.js"],"component---src-pages-resume-tsx":["/component---src-pages-resume-tsx-586ba190ccf3038c4760.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-tsx-a24b01169505dbf6aad6.js" async=""></script><script src="/commons-9978c19447d7ba4a79c6.js" async=""></script><script src="/app-bcad15ce14cfb9969c6b.js" async=""></script><script src="/styles-0adfb614f50665d6b684.js" async=""></script><script src="/webpack-runtime-d982a18daadbbee5df42.js" async=""></script></body></html>
