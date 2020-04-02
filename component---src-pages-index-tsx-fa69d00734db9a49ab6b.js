@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{QeBL:function(n,o,e){"use strict";e.r(o);o.default=function(){return"undefined"!=typeof window&&(window.location.href="/blog"),null}}}]);

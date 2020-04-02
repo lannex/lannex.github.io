@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Mar 2020 12:46:18 GMT</lastBuildDate><item><title><![CDATA[Redux와 Mobx 어떤 것을 쓸까?]]></title><description><![CDATA[시작 새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 02 Apr 2020 14:13:26 GMT</lastBuildDate><item><title><![CDATA[Redux와 Mobx 어떤 것을 쓸까?]]></title><description><![CDATA[시작 새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
 상태 관리를 React 자체적으로 처리 할 수 있는 Context가 존재하지만 대규모 프로젝트에서는 여전히 Redux나 Mobx…]]></description><link>https://lannex.github.io/blog/2020/redux-mobx/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/redux-mobx/</guid><pubDate>Fri, 06 Mar 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;시작&lt;/h1&gt;
 &lt;p&gt;새로운 프로젝트를 시작할 때 언제나 어떤 상태 관리 라이브러리를 사용할지 고민에 빠지게 됩니다.
 상태 관리를 React 자체적으로 처리 할 수 있는 &lt;a href=&quot;https://reactjs.org/docs/context.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Context&lt;/a&gt;가 존재하지만 대규모 프로젝트에서는 여전히 Redux나 Mobx가 유리합니다.&lt;/p&gt;
@@ -136,7 +136,7 @@
 &lt;p&gt;Mobx를 사용하겠다면 Mobx에 정확한 데이터 관리 및 불변성을 더해주는 &lt;a href=&quot;https://mobx-state-tree.js.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Mobx State Tree&lt;/a&gt; 사용을 고려해 보시길 바랍니다.&lt;/p&gt;
 &lt;p&gt;Redux경우는 다양한 미들웨어, 특히 비동기 데이터 관리인 &lt;a href=&quot;https://github.com/redux-saga/redux-saga&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Redux-Saga&lt;/a&gt;나 &lt;a href=&quot;https://github.com/reduxjs/redux-thunk&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Redux-Thunk&lt;/a&gt;는 필수에 가깝습니다.&lt;/p&gt;
 &lt;h1&gt;결론&lt;/h1&gt;
-&lt;p&gt;만약 상태 관리 라이브러리를 사용해 보지 않았다면 간단하고 배우기 쉽운 Mobx를 추천합니다.
+&lt;p&gt;만약 상태 관리 라이브러리를 사용해 보지 않았다면 간단하고 배우기 쉬운 Mobx를 추천합니다.
 또한 Mobx는 많은 추상화로 이루어져 있어서 Redux에 비해 더 적은 코드를 작성합니다.
 물론 최근에는 Redux든 Mobx든 hook을 지원하기에 작성해야 될 코드양은 예전보다 훨씬 많이 줄었습니다.&lt;/p&gt;
 &lt;p&gt;처음 추천하는 바는 Mobx이지만 이후 널리 사용되는 Redux도 꼭 사용해 보시길 바랍니다.
