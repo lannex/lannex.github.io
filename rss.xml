@@ -1,4 +1,255 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 15 Oct 2020 00:50:50 GMT</lastBuildDate><item><title><![CDATA[ES2016에서 ES2020까지 추가된 기능들]]></title><description><![CDATA[여러 가지 일로 바빴던 터라 오랜만에 글을 씁니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Nov 2020 15:44:23 GMT</lastBuildDate><item><title><![CDATA[Atomic Design과 BEM (ABEM)]]></title><description><![CDATA[…]]></description><link>https://lannex.github.io/blog/2020/abem/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/abem/</guid><pubDate>Fri, 20 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;많은 분들이 소프트웨어에서 아키텍처와 디자인은 늘 중요하다고는 말하지만 잘 간과하곤 합니다.
+사실 그렇게 간과하더라도 추상적으로, 그리고 말로만 알고 있는 그 중요성을 새로운 기능 추가 및 수정을 비롯한 다양한 요구사항을 겪으며 여러 프로젝트를 거치다보면 결국에는 알게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;거의 모든 것을 아키텍처와 디자인이 좌우한다&lt;/strong&gt;라는 것을 말입니다.&lt;/p&gt;
+&lt;h1&gt;왜 중요할까?&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;빨리가는 유일한 방법은 제대로 가는 것이다.&lt;/p&gt;
+&lt;p&gt;- 로버트 C 마틴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;이는 결국 효율성, 그리고 생산성의 이야기입니다. 제대로 된 아키텍처와 디자인일수록 소프트웨어의 복잡도는 줄어들고 변경이나 추가되는 기능들의 개발을 더욱더 수월하게 만듭니다.
+뿐만아니라 협업을 하는 당사자들간의 의사소통을 원활하게 해줍니다. 그리고 위험요소를 최소화할 수 있으며 미래의 불확실성 또한 줄일 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이런 이유로 이번 주제는 Front-end에서 UI 컴포넌트의 시스템 구축에 쓰이는 디자인 방법론을 얘기하고자 합니다.&lt;/p&gt;
+&lt;h1&gt;Atomic Design&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/75573eea54c91def7c03edb1dead25e3/atomic-design.svg&quot; alt=&quot;Atomic&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Atomic Design이란 브래드 프로스트라는 디자이너가 2013년에 제시한 개념이자 방법론입니다. 딱히 소프트웨어를 염두하고 만든 것은 아니나 컴포넌트 단위로 개발되는 Front-end의 UI 계층을 디자인하는데는 안성맞춤이라 널리 퍼지게 되었습니다.&lt;/p&gt;
+&lt;p&gt;Atomic Design은 Atoms(원자), Molecules(분자), Organisms(유기체), Templates(템플릿), Pages(페이지)로 구성됩니다.&lt;/p&gt;
+&lt;h2&gt;Atoms (원자)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;UI의 최소 단위&lt;/li&gt;
+&lt;li&gt;재사용을 위한 최소 단위이니 가장 단순 역할을 담당해야함&lt;/li&gt;
+&lt;li&gt;Button이나 Input, Label과 같은 기초적인 컴포넌트&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/29007/atoms.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABa0lEQVQoz31STUsCQRieHxBd+gUdIoj+QRB90LVLfyY6dQmNqIPYqrtqCBFpdqijUWCSByO3CDQCocJ1dbcY0133Y9zdZndk0K18mHmZeWaemXeed4DjwbKsvgdnCKqmyaZq2CPkMADutgcyt60+YXCEne5HDyqW6diO/Z/Y3QdhrVaDsE1OICQyka7pum7grqo92hRFNQxzIObLPBPjMucXR7HQW27fvZikrWqCKLXkT9wQQtYQSGqgDeFhlBNLJ6/MWvPm4HJnHX5JNHPbGQdQqVSz2cxTYPF0FTzvLqfPMpXqC1m7LZU3g6FAOLEVDBXvH4mvI2JZkqJcUi6y/Pa0fBdh48lWUyRrgXASTM5MzC7guBdJYcZEyG9YoVCIsvHrq1yMS+TzecwYpusHk0pPzS/NrWzgyB5nXQtR/w+3Gw3hocwLQn1QMO/B313lvd6oiy0cO12F8v46U43vVeMB6Mh3Kv08FL/FPwOVVR7my4lVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Atoms&quot;
+        title=&quot;Atoms&quot;
+        src=&quot;/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/5a190/atoms.png&quot;
+        srcset=&quot;/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/772e8/atoms.png 200w,
+/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/e17e5/atoms.png 400w,
+/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/5a190/atoms.png 800w,
+/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/c1b63/atoms.png 1200w,
+/static/ce6bcfc1b1cc072924365ec2d5f6e7e3/29007/atoms.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Molecules (분자)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2개 이상의 Atom으로 구성되어 그룹화된 컴포넌트&lt;/li&gt;
+&lt;li&gt;Atom의 결합으로 보다 구체적인 작은 블록 형태&lt;/li&gt;
+&lt;li&gt;InputGroup = Input + Label&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aaf4ff47291c30933a57611ca3f1dda1/29007/molecules.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABgElEQVQoz2P4DwZ///799+8fkPxPCmCAUECdcJIEzRANnz59vnD5xoePn5CN+PXr10cwAMp++PDh/YePX79++/79x7dv33///g21+eev33MndM2rDJozofP7j59w/b9//wGqg6CfP3/++vnrx/dvYPT9D1zzy9cfJtdkvJpmMKMx58nTV2BtILnFa7cYuIW7RmbouYRu2H3k6smDye6mJVGeKW7Ga+dOBmn+8unTkoXLphf7Ty6Nml0WuHjBks+fPv0F29wxZR6DgBqfhg0Dj9L0ZRtO79nkpsqf5Grkoco/s60KpHnjhq1rKu0uT3SsjbE/2227scZx3dpNED9v2LHfOz43Nr/GLzF/+/6jv79/OXP0wMWTh88dPfDs8QOQ5qNHjs+riVzXkTCluWxNW/yC2sjDB4+CvP33L9Dxr9+8ffvu/S+wL7BH1dmzl06cOPfn79+Tpy6cPnPxPyy0//z58/07KKjAiQAC/sLQP0Q8QyIbOc6JTSR/wQCZQSQAAM2WOy4NahnSAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Molecules&quot;
+        title=&quot;Molecules&quot;
+        src=&quot;/static/aaf4ff47291c30933a57611ca3f1dda1/5a190/molecules.png&quot;
+        srcset=&quot;/static/aaf4ff47291c30933a57611ca3f1dda1/772e8/molecules.png 200w,
+/static/aaf4ff47291c30933a57611ca3f1dda1/e17e5/molecules.png 400w,
+/static/aaf4ff47291c30933a57611ca3f1dda1/5a190/molecules.png 800w,
+/static/aaf4ff47291c30933a57611ca3f1dda1/c1b63/molecules.png 1200w,
+/static/aaf4ff47291c30933a57611ca3f1dda1/29007/molecules.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Organisms (유기체)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Molecule과 Atom을 조합하여 하나의 큰 블록 형태&lt;/li&gt;
+&lt;li&gt;큰 단위의 시작점이라 여기서부터는 재사용성이 다소 떨어짐&lt;/li&gt;
+&lt;li&gt;Header = InputGroup + Menu+ Button&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/15231e6ac3ed74f20229d6b41209f39d/29007/organisms.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQ0lEQVQoz7WRW0sCQRTH5/tFrCZkhD71WKG1JpuKz+GFFoQytQtmIfTBStTdncvuzOzMjs3uZkhBBNGPw5kzzLnMfwYopaIYmbjER9Hqd4DVHwA+DRGhEFPic+2Rz4jPPo+VtpQk+Fo86VoDK//QLA6bB6NG4bZRmNp1yuOb6/urDQlrgZFaR+DxotQ+3L4yM7a51ysbdik7aZtcxtlcCjcM3mbz2WL5Opu7Hkq7IIQdQREPwLR9fGNujWuZ4Xn+3jJGVeOlW/ZZPFBIqeshQh6ECJMwDFMFIpRCRZQzMGmddI6M60rONvd7pzuX5dxT5yydLKXECLuuroWe57mOq2NCfG1BEDDGwLhl9ivZu3q+Xytq8QNr97lbDRLNQgidQWM+VhbDU9MAhP2lhxcO1E3nS+h4BCKSvvM///Pm5vtP/sw7gQ1UpIiXfFcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Organisms&quot;
+        title=&quot;Organisms&quot;
+        src=&quot;/static/15231e6ac3ed74f20229d6b41209f39d/5a190/organisms.png&quot;
+        srcset=&quot;/static/15231e6ac3ed74f20229d6b41209f39d/772e8/organisms.png 200w,
+/static/15231e6ac3ed74f20229d6b41209f39d/e17e5/organisms.png 400w,
+/static/15231e6ac3ed74f20229d6b41209f39d/5a190/organisms.png 800w,
+/static/15231e6ac3ed74f20229d6b41209f39d/c1b63/organisms.png 1200w,
+/static/15231e6ac3ed74f20229d6b41209f39d/29007/organisms.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Templates (템플릿)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;레이아웃으로 하나의 틀이자 설계도&lt;/li&gt;
+&lt;li&gt;배치되거나 포함된 컴퍼넌트가 없는 페이지의 골격 구조&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/16c85b8417cf9dd2c6159675f5bb21e5/29007/templates.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB90lEQVQoz21SS08TURTuHzAiG+NeMA2NwYUmipMaSTHpghpIANNoZCUu2Lrwn+hS2VnDAgjii8RQDY9MqA0tLX0wTGVmOr29M1PnzvuOp70FN5y5d5LvnPudx3dvhPYsvMi8MNBMs6kiWKZlg8d1PcO2LOqxAxHYQRC4PQO/6zgAWSwIaYeQNsZtrBGgUOr7vgUJaPCffFyr1SqVerV6VCqdCIIiy+Ds9hNQQogFHyEdwyAmcWzHtZ3zTiOqohzkchihP6KoSFK5WNQwZjGTWDVBhHUqKVjTEcIthIWWAu30yW2EDF1nADo/LBROGw0G84dHNxMzN+KPuan5p4uvYw+nRydmk88Xl5bXIAojdMn6WSkgi4IAHgb5fPHarcSVkfj1scmJJwuXo9xgLH47mX679LErJ5CbsoxUlZ22bbtUKDQVhUFNNz5tbq1/39rNHfza21/7+uPn7v42n68ci0yUiK5pfzud/t24bo7nZUli0Pc9EB8kDmlIfdCe9gp6fuCfzdxqgc4n9TqIDFJXymWWFf4qwpnVLx9WPi+vf8vu8BubWehiNZutio1+ZdiQHi7DsbsGMrCbZzNfHR0fiHJDXCox9+LS8L3BkfidZPrN+0x/5gvfFiP/LpZj49PDXOru5LOZhVdD91PRB1OP0i/fZVaY2v8Av7AxEqyQuM8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Templates&quot;
+        title=&quot;Templates&quot;
+        src=&quot;/static/16c85b8417cf9dd2c6159675f5bb21e5/5a190/templates.png&quot;
+        srcset=&quot;/static/16c85b8417cf9dd2c6159675f5bb21e5/772e8/templates.png 200w,
+/static/16c85b8417cf9dd2c6159675f5bb21e5/e17e5/templates.png 400w,
+/static/16c85b8417cf9dd2c6159675f5bb21e5/5a190/templates.png 800w,
+/static/16c85b8417cf9dd2c6159675f5bb21e5/c1b63/templates.png 1200w,
+/static/16c85b8417cf9dd2c6159675f5bb21e5/29007/templates.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Pages (페이지)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Template에 Atom, Molecule, Organism을 배치한 완성본&lt;/li&gt;
+&lt;li&gt;Template이라는 일종의 양식이 적용된 최종 산출물&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7bf47a16c2802b6ed257a2599f64cd6b/b17f8/pages.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFAv/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAGzl8oaosj/xAAdEAABAgcAAAAAAAAAAAAAAAABAhEAAxITITEz/9oACAEBAAEFAsuVKqGmELJvS+f/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwEn/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8BZ//EABkQAAIDAQAAAAAAAAAAAAAAAAABAhAhMf/aAAgBAQAGPwJb0yFz1iP/xAAaEAEAAgMBAAAAAAAAAAAAAAABABEhMVFx/9oACAEBAAE/Ibu6LUKhE7calSnkobolcwCG5n4z/9oADAMBAAIAAwAAABDAP//EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAwEBPxAa5N//xAAXEQEBAQEAAAAAAAAAAAAAAAABABEx/9oACAECAQE/EFhHL//EABwQAQADAAIDAAAAAAAAAAAAAAEAESFBUTGBkf/aAAgBAQABPxCpd2DQzFK+QfDQMr9dREbGriFQJPDUdQggIyjqNWqvJZ//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Pages&quot;
+        title=&quot;Pages&quot;
+        src=&quot;/static/7bf47a16c2802b6ed257a2599f64cd6b/4b190/pages.jpg&quot;
+        srcset=&quot;/static/7bf47a16c2802b6ed257a2599f64cd6b/e07e9/pages.jpg 200w,
+/static/7bf47a16c2802b6ed257a2599f64cd6b/066f9/pages.jpg 400w,
+/static/7bf47a16c2802b6ed257a2599f64cd6b/4b190/pages.jpg 800w,
+/static/7bf47a16c2802b6ed257a2599f64cd6b/e5166/pages.jpg 1200w,
+/static/7bf47a16c2802b6ed257a2599f64cd6b/b17f8/pages.jpg 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1&gt;BEM&lt;/h1&gt;
+&lt;p&gt;BEM (Block Element Modifier)은 CSS를 보다 쉽게 유지 관리 할 수 도와주는 CSS 디자인 방법론입니다. 네이밍 컨벤션이기도 하는 BEM은 CSS를 다루는 것이라 이미 예전부터 많은 곳에서 사용되고 있습니다.&lt;/p&gt;
+&lt;p&gt;BEM은 단어 구분을 kebab-case로 사용하며 그 이름과 같게 Block, Element, Modifier로 구성되어 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;form&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;form form--theme-xmas form--simple&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;form__input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt;
+    &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;form__submit form__submit--disabled&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;submit&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;.form&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token selector&quot;&gt;.form--theme-xmas&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token selector&quot;&gt;.form--simple&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token selector&quot;&gt;.form__input&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token selector&quot;&gt;.form__submit&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token selector&quot;&gt;.form__submit--disabled&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Block&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;독립적인 단위&lt;/li&gt;
+&lt;li&gt;클래스 첫머리에 위치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Element&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Block에 일부이며 종속적&lt;/li&gt;
+&lt;li&gt;독립적인 의미는 없음&lt;/li&gt;
+&lt;li&gt;Block과 Element 사이는 Underscore를 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Modifier&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Block 또는 Element에 대한 플래그, 동작 또는 상태를 변경하는데 사용&lt;/li&gt;
+&lt;li&gt;속성이라고 할 수 있음&lt;/li&gt;
+&lt;li&gt;Element와 Modifier 사이는 두개의 Hyphen을 사용&lt;/li&gt;
+&lt;li&gt;클래스 끝머리에 위치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ABEM&lt;/h1&gt;
+&lt;p&gt;ABEM은 Atomic Design과 BEM의 조합입니다. BEM의 단점인 긴 Modifier를 축약형으로 바꾸고 클래스 첫머리를 Atomic일 경우 &lt;code class=&quot;language-text&quot;&gt;a-&lt;/code&gt;, Molecule일 경우 &lt;code class=&quot;language-text&quot;&gt;b-&lt;/code&gt; 와 같이 각각의 단위 첫글자를 따서 사용합니다.&lt;/p&gt;
+&lt;p&gt;그리고 단어 구분을 kebab-case를 사용하는대신 camelCase를 사용합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- BEM --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;block-name__element-name block-name__element-name--small block-name__element-name--green block-name__element-name--active&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  Submit
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- ABEM --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;a-blockName__elementName -small -green -active&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  Submit
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;정리&lt;/h1&gt;
+&lt;p&gt;빠르게 변화하는 개발 환경 속에 더 나은 방법론이 대두될 수도 혹은 직접 만들 수도 있습니다.
+직접 원칙을 정한 설계가 물론 더 좋을 순 있지만 Atomic Design + BEM을 도입함으로써 그 고민의 과정을 좀 더 줄일 수 있습니다.&lt;/p&gt;
+&lt;p&gt;어떻게 구조를 설계해야 할 지 고민하고 있다면 Atomic Design + BEM을 한번 도입해보는 게 어떨런지요?&lt;/p&gt;
+&lt;h1&gt;참고 자료&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://bradfrost.com/blog/post/atomic-web-design/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://bradfrost.com/blog/post/atomic-web-design/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://getbem.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://getbem.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[ES2016에서 ES2020까지 추가된 기능들]]></title><description><![CDATA[여러 가지 일로 바빴던 터라 오랜만에 글을 씁니다.
 무엇을 쓸까 고민하다가 올 초에 ES2020이 발표되고 언제 한번 모아서 정리 혹은 공부할 겸 쓰려 했었는데 이제야 하게 되네요. ES2015(ES…]]></description><link>https://lannex.github.io/blog/2020/es2016-es2020/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/es2016-es2020/</guid><pubDate>Sun, 20 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;여러 가지 일로 바빴던 터라 오랜만에 글을 씁니다.
 무엇을 쓸까 고민하다가 올 초에 ES2020이 발표되고 언제 한번 모아서 정리 혹은 공부할 겸 쓰려 했었는데 이제야 하게 되네요.&lt;/p&gt;
 &lt;p&gt;ES2015(ES6)는 이미 현업에서도 많이 사용되고 알려져 있으니 제외하고 ES2016부터 ES2020까지 빠르게 발전하고 있는 JavaScript의 추가점을 살펴보겠습니다.&lt;/p&gt;
@@ -173,16 +424,16 @@ items &lt;span class=&quot;token comment&quot;&gt;// { a: 1, b: 2, c: 3 }&lt;/sp
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Positive and Negative lookahead&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// X(?=Y): X를 찾지만 Y가 뒤에 오는 경우에만 가능&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// X(?!Y): 반대&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookahead1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/im(?=possible)/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;This is impossible.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookahead2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/im(?!possible)/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;This is impossible.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookahead1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;im(?=possible)&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;This is impossible.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookahead2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;im(?!possible)&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;This is impossible.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;// Positive and Negative lookbehind&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// (?&amp;lt;=Y)X: X와 일치하지만, 앞에 Y가 있는 경우에만 가능&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// (?&amp;lt;!Y)X: 반대&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookbehind1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/(?&amp;lt;=super)hero/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Batman is the superhero protector of Gotham City.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookbehind2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/(?&amp;lt;!super)hero/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Batman is the superhero protector of Gotham City.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookbehind1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;(?&amp;lt;=super)hero&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Batman is the superhero protector of Gotham City.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lookbehind2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;(?&amp;lt;!super)hero&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Batman is the superhero protector of Gotham City.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h5&gt;&lt;code class=&quot;language-text&quot;&gt;s&lt;/code&gt; Flag&lt;/h5&gt;
@@ -190,7 +441,7 @@ items &lt;span class=&quot;token comment&quot;&gt;// { a: 1, b: 2, c: 3 }&lt;/sp
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt;는 &lt;code class=&quot;language-text&quot;&gt;\n&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;\r&lt;/code&gt;을 제외한 모든 문자와 일치하는 정규식 패턴입니다.&lt;/li&gt;
 &lt;li&gt;추가된 &lt;code class=&quot;language-text&quot;&gt;s&lt;/code&gt;는 줄 바꿈을 일치하고자 할 때 사용합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token regex&quot;&gt;/hellow.world/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;hellow\nworld&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;hellow.world&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;hellow\nworld&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;hellow&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;world&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;hellow\nworld&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h5&gt;Unicode Property Escapes &lt;code class=&quot;language-text&quot;&gt;\p{...}&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;\P{...}&lt;/code&gt;&lt;/h5&gt;
 &lt;ul&gt;
@@ -206,7 +457,7 @@ items &lt;span class=&quot;token comment&quot;&gt;// { a: 1, b: 2, c: 3 }&lt;/sp
 &lt;li&gt;결과값에 번호로 할당하는 대신 이름을 지정하여 할당 할 수 있습니다.&lt;/li&gt;
 &lt;li&gt;이는 &lt;code class=&quot;language-text&quot;&gt;groups&lt;/code&gt;로 접근할 수 있습니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; re &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/(?&amp;lt;year&gt;\d{4})-(?&amp;lt;month&gt;\d{2})-(?&amp;lt;day&gt;\d{2})/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; re &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;(?&amp;lt;year&gt;\d{4})-(?&amp;lt;month&gt;\d{2})-(?&amp;lt;day&gt;\d{2})&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;2020-09-20&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// result.groups&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// { year: &apos;2020&apos;, month: &apos;09&apos;, day: &apos;20&apos; } &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -339,7 +590,7 @@ globalThis &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; global 
 &lt;ul&gt;
 &lt;li&gt;정규식에서 일치하는 모든 그룹을 포함하는 반복자를 리턴합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; regexp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;/[a-c]/g&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; regexp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;[a-c]&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-flags&quot;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;ABC, abc&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;matchAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;regexp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// { [Iterator] }&lt;/span&gt;
 
@@ -444,7 +695,7 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
 &lt;p&gt;&lt;strong&gt;npm trends&lt;/strong&gt;에 따르면 2020년 3월 현재 Redux가 Mobx보다 훨씬 더 많은 다운로드 수를 기록하고 있습니다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -455,20 +706,20 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 45.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABJUlEQVQoz3VRi3LDIAzL/3/prl1akmDeoFmmzbqt404nYxkjw+Kcw/V6xbquCCFg33fbb9uGMQZyG6itYdRkey7SI/yzlpzzWfhzDc13rNLgJaAfF9RacXZUvfWOVDtimSy5Y6GTlOIsUCe1saAhawEbcl+7Nrc+PNQQFDep+PTV2IXJ1BaOeffJnDD5xKq4HDO+HMUu86lh1SZbbHZpV4c08nRMNocSojlq6oZjYHQTc21aqOOU2WyP1WqYo1s2ZP0rm8NaijUYmhgPgeAh7vkpH3vBXd2+6r9BbeGvppTtjfSp3oIT2W9P4//WEfbLRRyG3NDD/T1UG+nAiJvFXZ75ySO4GccdCx9b/IGgiOKNg8w4ysxTj4dD9Nt3/qGd7HXSIPgCy+vBe9wU8EMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHUlEQVQoz31Ri26EMAzr///p3XYH9JXQl5ekcGITWiUTN3FTN7haK0703lEkEjGYGWMMvFJDSMLD0zS6NH+3NO9KKeh3AsmN0Y+GhO4fUO1Zk48YGNhrB5duMUt027aBKZugtSZQQTOBNtR9E+f9cJD3ZlhyxXeseAmUv1NF5AYXYsYaWRLNkidegq8w+TMU1DYbaZONJteL1Ig5PuBWcRjlSSyOapuOMCa4Nou7xCC3e6ooWsd0rzM395foKGeZzT5nJolxFBR6SPd6ycMXc9sv9b9Qrdu8t7+qY5YZ30Jfw3WgyOY/ncJRiihpxcgLel4PXLkgLRgcBF742+rjo7tw8nDMhBQDchSnacaT/9qHBRTXT/6skZ2dnHPCD2buwe9LpKR5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;graph&quot;
         title=&quot;graph&quot;
-        src=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png&quot;
-        srcset=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/04472/graph.png 170w,
-/static/1702dea61dfddd4ae4f6e9f4688c446b/9f933/graph.png 340w,
-/static/1702dea61dfddd4ae4f6e9f4688c446b/c5bb3/graph.png 680w,
-/static/1702dea61dfddd4ae4f6e9f4688c446b/b12f7/graph.png 1020w,
-/static/1702dea61dfddd4ae4f6e9f4688c446b/b5a09/graph.png 1360w,
+        src=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/5a190/graph.png&quot;
+        srcset=&quot;/static/1702dea61dfddd4ae4f6e9f4688c446b/772e8/graph.png 200w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/e17e5/graph.png 400w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/5a190/graph.png 800w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/c1b63/graph.png 1200w,
+/static/1702dea61dfddd4ae4f6e9f4688c446b/29007/graph.png 1600w,
 /static/1702dea61dfddd4ae4f6e9f4688c446b/f1f01/graph.png 2212w&quot;
-        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -478,7 +729,7 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
 &lt;h5&gt;Redux&lt;/h5&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -489,20 +740,20 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 48.23529411764706%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPklEQVQoz12SyU9TYRTF3z9BnRI7QN/QvteBV/qKrcQ40DJYa0GMceFG0zIUbEwTjNFYQ0jY6o4hAWKtuiCxtgi0gQVajLg3xoV/gXt3x/O1qTEufrn3u+d+33vJOVIoHIXVPwBRg2YEZqgfuhVDKBJDnxVFoNeCq0dDt9vzH144Odf0IGIDlxGOnOd9C5LHZ0L2BqCxKqwqF1TWs04Zjm4VDpcKu0tp4SBi3uk7OP/pJZMPBDUDpsePXhLQfLCCYVj8M0PR4aNmdFAN9FHzc0/0Bnd14hGa0QvDb0JaaNQxV6lgulrFvVoNt0lhfx/Fw0Okd3YwvruLNEmRa3t7mKd2o9HAYL2OOBnibJBalrPZ/ANIl75/Q/TrMS4ef0H88xESnz5i+qiJp80m7vLCHJcLH7bxqFbFQvU9SgcHWK68w/LbN3j1uoytUgnbG+tolsuYykxB+vHiOX4+K+LXk8f4/XAeyN8HikVgaQmYmQFmc0Au1+4Fi4vcyQPZLDA52SaTAQoF3BmbgLQ1mkTpShwvE8PYHBrBeoKk0tgcn8Da8CjWRq7+ZXUkiY2bt7CaTGGF5xXebSH062O4wGRIXXTR1kJBFx20kTOMg+CEw42TnJ+i26La7G7YaVRLE7vU21XGae4oNEg6RzdFBr10O0Ssvn6YxEMnFeZKZNEMRaDQVZ29xbzpdFTl2WRuNe7pvCfzQyKvksZXRTjdHChELGjMofhaj9DYu2W9FWaZmpePid0e2QuVZ1FbMOhi/ge6tYnOtoL8UgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 48%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACSUlEQVQoz22SS08TYRSG51+0NETa0unMdKad3gsaFpgQYkiFAtJGERJXlVRLk4bghbpQol0SE4kbdwarONMLqdGKYpSVXMSNrvwD/gHjwtf3AzQxcfHknO+c97vkO68UTfQjljgJEc1oEmESjPcjyBgKJ2CYcfgU47/0ElkNIhIXe1PQg1FIRjgOjYluHkVBIBSDRw78xe3TDvGQnl4VbuI5Xgu81Hh91LIuhXiDziTIosCgwNRCiBgRqB4FqleBdozq8SPEnu7X/6krosd9mm5CumfbKK2t4cqTGvK1p5it1VCo13G300HuuYVzZMKyMG7ZSAttawMzzSaGqBluNDDMOMT++XYbxes3IY18/YLU5wMMfNrH4P4eBnc+Ire7g8reLi58eI9L77Zweestim82Ue68wsPtbdxnXm018aDZwCPbwmM+YpP50rUbkLZXV3FQreLbndv4Xqngx8ICft2q4OfKClAqAfPzQLFIrgKFArC8DCwuAvk8MDd3hMjLZSxNz0J6PTmFl2dG8CJ9Fu30KDZIc3wSrekZ1EczqI9lYDPaY+OwGBvTF2FNZbHOfD0zccgzajayOWRPD0Fy8jMdXhVO4uDnOjiIbjFNfnwXh9DFtYtDEzh7ZLhZPyHrcFHrdPvhYl/outlXODCpj7YRPjRoFTNgIhlLIUpf6XoYMq0UTZ5CnB7VKNbotUTfAEzWZR4c4VrjHqFV6BYvHyLpwgb0np9RoVEN2kUjAYp8rAXYE+JeWkrm5iAPEy8Ra01cKkzOw//wGx6bikp6juBsAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;redux&quot;
         title=&quot;redux&quot;
-        src=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png&quot;
-        srcset=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/04472/redux.png 170w,
-/static/8165f68ea5f8478ce733a82b9f9e06d9/9f933/redux.png 340w,
-/static/8165f68ea5f8478ce733a82b9f9e06d9/c5bb3/redux.png 680w,
-/static/8165f68ea5f8478ce733a82b9f9e06d9/b12f7/redux.png 1020w,
-/static/8165f68ea5f8478ce733a82b9f9e06d9/b5a09/redux.png 1360w,
+        src=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/5a190/redux.png&quot;
+        srcset=&quot;/static/8165f68ea5f8478ce733a82b9f9e06d9/772e8/redux.png 200w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/e17e5/redux.png 400w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/5a190/redux.png 800w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/c1b63/redux.png 1200w,
+/static/8165f68ea5f8478ce733a82b9f9e06d9/29007/redux.png 1600w,
 /static/8165f68ea5f8478ce733a82b9f9e06d9/e04e6/redux.png 2152w&quot;
-        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -511,7 +762,7 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
 &lt;h5&gt;Mobx&lt;/h5&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -522,20 +773,20 @@ obj&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;props&lt;span cla
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 47.64705882352941%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPUlEQVQoz2WSyU9TYRTF358hokDb1zfTgba0TJroykQWmkCAlUYiAalVKdaYFlkY0J2yNCZG4wah0IHiwpi40MhUhkgFgZYS/5Dj+WppTFz8ct493703L7lHag11Ith2AV5/CP7WdviCHTCpwg8EO+HyBGCXdTicxn8IX9Ga0dF1GaH2i5UdkmF5oeouCNUMN3TTA53aaFPQZFeraH/Vof3ja7V34Z36tYVikVioEsvlq+BULTj5B6fIrC23Hxp7xbcsvCoK54QvZXM5fJibw3wyiaRgfh6pxUVkMxmk+J2ukqmynE4jt7CALGeWSI5kZ2fxOZtFeDQCqbi9hZ1vX7G98h351RWsra1ifWMd65t5fMlv4BP149YmltiX2tnGcmEXSfJ+9wfe/SzgzV4Br6hvy8cYjMYgvf59gif7e3h0eIB7Rwe4VTxErHSEp2zoK5cwcFxCP+kjPfQmT8oYpl5n3Vsqoof9137t4yb3jEw/h3R16hkuJSZwJZ5A9+M4usdjuD01jdjLGfRGx9EffUjGMTBGHkSReDGD8MQkboQjGIrcx53RuwgPDSM+FsXg0Agk5Wwj9LpGaHUNUKoYTU7ovKjzzHko9U1Qz9kqKrM2GRedF5VZ2znrqLfBThwNDhjiKAFfCB5mT3W1wMvL+phBt7+tcm1ZvIW64KXnFAmgtjCfFrMpMxke0WcxZs0tUFjbmEvJYKNJQ0RE0yyYjJGIksiiGDJEM2MhgiyWNjM2ImYO2aj0iDlZMWv8AXI6nOnQD5GyAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 47.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACMUlEQVQoz32STU8TURSG52cgiP2YdqbtdPo9AsrKnQs1mkBCTYwbTZNGbRGLBSGAMWokbtS4MjFGgTZ8TBujiSZu1AjaD1BQoYVC9H+8vncc3eniybnn3nPP3Ml5pEisC4JQxPhN1IDGqOkxC78WgVcN/hPFp0MPGyQBXyAMSVwSi0AwCp8WthoEiMOlwOlWLVyy7y//2xNIooH4iuoPWYi1aC6QvQF4FA2yjZt5QI9C4QPcf/ZsPLxnvdAslzBbKKBQLKIo4Hphfh4l08QC80UB95Zsni8uocxzc24OJeZlRnNmBq9Zn7mUhdRcreHz+3dYW/6A+soyKh9XUK18QrVWxdtqBW8YX9VreLFaR3ltFS831mGS2fUveMb45OsGHjE+3WshNXIN0uO9XUx9/4bRxiYGG1s432wgt93EzdYOkrstJK24gwHSx3yc9WlePsW8v7WNPtae3NrEmZ8/kJ6+C+nEnWkcmZzC0YlJHB+fwLH8KM7duo38g4fovzqCAZIczuM0SeaGMXbvPjLXb+BsdhCpy0NIZ7K4mL6AsSs5pBglpd0J/z4HOQDVRnN6oXn8UNqY89y33wW1wwVvWyc0MRhO09vhhNzugIf7sqBThsYBS0acHh48DDUUR5gKxY1DCCV6oHJiMv0Md/ciynMxWcXoQbSrF0F6Kvt1RBLdUIVu9uRdsp8echFkM6GLj6JqQhkWCBc91CgQillnQiEva3U2E3q5+QeWcrbgQi/BL0aUnD1WABemAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;mobx&quot;
         title=&quot;mobx&quot;
-        src=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png&quot;
-        srcset=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/04472/mobx.png 170w,
-/static/feb47898099f2bec7c74bd0e4fdec200/9f933/mobx.png 340w,
-/static/feb47898099f2bec7c74bd0e4fdec200/c5bb3/mobx.png 680w,
-/static/feb47898099f2bec7c74bd0e4fdec200/b12f7/mobx.png 1020w,
-/static/feb47898099f2bec7c74bd0e4fdec200/b5a09/mobx.png 1360w,
+        src=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/5a190/mobx.png&quot;
+        srcset=&quot;/static/feb47898099f2bec7c74bd0e4fdec200/772e8/mobx.png 200w,
+/static/feb47898099f2bec7c74bd0e4fdec200/e17e5/mobx.png 400w,
+/static/feb47898099f2bec7c74bd0e4fdec200/5a190/mobx.png 800w,
+/static/feb47898099f2bec7c74bd0e4fdec200/c1b63/mobx.png 1200w,
+/static/feb47898099f2bec7c74bd0e4fdec200/29007/mobx.png 1600w,
 /static/feb47898099f2bec7c74bd0e4fdec200/de9fe/mobx.png 2146w&quot;
-        sizes=&quot;(max-width: 680px) 100vw, 680px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
