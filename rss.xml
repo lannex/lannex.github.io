@@ -1,4 +1,150 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 28 Nov 2020 16:30:39 GMT</lastBuildDate><item><title><![CDATA[Atomic Design과 BEM (ABEM)]]></title><description><![CDATA[…]]></description><link>https://lannex.github.io/blog/2020/abem/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/abem/</guid><pubDate>Fri, 20 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;많은 분들이 소프트웨어에서 아키텍처와 디자인은 늘 중요하다고는 말하지만 잘 간과하곤 합니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 29 Nov 2020 09:42:20 GMT</lastBuildDate><item><title><![CDATA[Github Actions로 간단한 Azure Static Web Page 배포]]></title><description><![CDATA[Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다. 현재 사내에서 사용하는 저장소가 Gitlab이라 Gitlab CI/CD는 많이 사용하나 Github Actions…]]></description><link>https://lannex.github.io/blog/2020/github-action/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/github-action/</guid><pubDate>Sun, 29 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다.&lt;/p&gt;
+&lt;p&gt;현재 사내에서 사용하는 저장소가 Gitlab이라 Gitlab CI/CD는 많이 사용하나 Github Actions은 사용할 일이 개인적인 작업 말고는 없었습니다. 하지만 최근에 비즈니스적인 이유로 Github 혜택을 받게 되어 저장소를 조금씩 이전하고 있어서 드디어 Github Actions를 실무에서도 사용할 수 있게 되었습니다.&lt;/p&gt;
+&lt;p&gt;워낙 쉽고 편리하니 짧게나마 알아보겠습니다.&lt;/p&gt;
+&lt;h1&gt;🤔 Github Actions이란?&lt;/h1&gt;
+&lt;p&gt;Github에서 2018년에 공개되어 2019년 정식으로 릴리즈된 워크플로우 자동화 기능입니다.&lt;/p&gt;
+&lt;p&gt;이전에는 &lt;code class=&quot;language-text&quot;&gt;Travis-ci&lt;/code&gt;나 &lt;code class=&quot;language-text&quot;&gt;Circle-ci&lt;/code&gt;를 사용하여 빌드 및 테스트를 진행하는 게 일반적이었는데 이제는 사실상 특별한 일 없고서는 Github Actions만 사용하면 됩니다.&lt;/p&gt;
+&lt;p&gt;더군다나 Github Actions는 CD까지도 커버할 수 있어서 너무나도 유용합니다.&lt;/p&gt;
+&lt;h1&gt;🚀 빠른 시작&lt;/h1&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/16fc4921785fa73cf2480e52795ae0e1/47aef/ga-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVQY05VQ2W6EMAzk/7+RFnZJ1YUA4Qg5SaZOske1Uh9qyXJmYo/sqYyxkIeC0gbbLqEJr9uOhfIgng8DduJ3eWReG4dl3XJ/mnvMiGUlzqLCPWKM+G+kmTQWAuBOQLuIqpBFzDmHcRwxCwFOdZoF+oFn/H3rMROepgmcj7SxfIqeIcL5CGXfBI0xaNoLOsbQNC0Y+yLcZlzXH7h2DJdrh/qzwa0f4L3HeYb7hrFs+Pvc1JD8WTdJHh6UCsuuIOh9KJ09zVUVz53zJPYSNO+C6dNaC0uN2gYoQ0k1Nf5lcfHwcTbwA2VR0r81wQGKAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GA-1&quot;
+        title=&quot;GA-1&quot;
+        src=&quot;/static/16fc4921785fa73cf2480e52795ae0e1/5a190/ga-1.png&quot;
+        srcset=&quot;/static/16fc4921785fa73cf2480e52795ae0e1/772e8/ga-1.png 200w,
+/static/16fc4921785fa73cf2480e52795ae0e1/e17e5/ga-1.png 400w,
+/static/16fc4921785fa73cf2480e52795ae0e1/5a190/ga-1.png 800w,
+/static/16fc4921785fa73cf2480e52795ae0e1/47aef/ga-1.png 1063w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+빠르게 시작하는 방법으로 우선 Github Actions를 사용할 해당 저장소로 이동한 뒤 상단 탭 리스트에 존재하는 &lt;code class=&quot;language-text&quot;&gt;Actions&lt;/code&gt;를 클릭하면 나오는 페이지에서 시작 워크플로우 설정을 스스로 코드를 작성할지 아니면 마켓 플레이스에서 원하는 워크플로우를 가져와 기본으로 사용할지만 선택해주면 됩니다.&lt;/p&gt;
+&lt;h1&gt;✏️ yml 작성&lt;/h1&gt;
+&lt;p&gt;Github Actions 관련 &lt;code class=&quot;language-text&quot;&gt;yml&lt;/code&gt;형식 파일들은 해당 저장소의 &lt;code class=&quot;language-text&quot;&gt;/.github/workflows/&lt;/code&gt; 폴더로 저장되어 커밋됩니다.&lt;/p&gt;
+&lt;p&gt;아래는 Github에서 제공하는 샘플 &lt;code class=&quot;language-text&quot;&gt;yml&lt;/code&gt;파일 입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# 이것은 Actions 시작에 도움이되는 기본 워크플로우입니다.&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; CI
+
+&lt;span class=&quot;token comment&quot;&gt;# Action이 실행될 시점을 제어합니다.&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;# 마스터 브랜치에 대해서만 푸시 또는 풀 리퀘스트 이벤트에서 워크플로우를 트리거합니다.&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; master &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; master &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;# Actions 탭에서 이 워크플로우를 수동으로 실행할 수 있게 허용합니다.&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 워크플로우 실행은 순차 또는 병렬로 실행할 수 있는 하나 이상의 jobs으로 구성됩니다.&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;# 이 워크플로우에서는 &quot;build&quot;라는 하나의 job이 포함되어 있습니다.&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# job이 실행될 runner 타입입니다.&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+
+    &lt;span class=&quot;token comment&quot;&gt;# steps는 job의 일부로 실행될 태스크의 순서를 나타냅니다.&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token comment&quot;&gt;# $GITHUB_WORKSPACE 에서 저장소를 체크아웃하여 job에서 액세스할 수 있도록 합니다.&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2
+
+      &lt;span class=&quot;token comment&quot;&gt;# runners shell을 사용하여 하나의 커맨드를 실행합니다.&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Run a one&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;line script
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; echo Hello&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; world&lt;span class=&quot;token tag&quot;&gt;!&lt;/span&gt;
+
+      &lt;span class=&quot;token comment&quot;&gt;# runners shell을 사용하여 여러 커맨드를 실행합니다.&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Run a multi&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;line script
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+          echo Add other actions to build,
+          echo test, and deploy your project.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;📦 마켓 플레이스&lt;/h1&gt;
+&lt;p&gt;Github Actions의 가장 큰 장점은 오픈 소스로 공유할 수 있다는 점입니다. 이 말인즉, 이미 만들어진 Action을 가져다 쉽고 빠르게 자신만의 Action을 만들 수 있다는 말입니다. 벌써 6000개가 넘는 Action이 Github Marketplace에서 공유되고 있으며 우리는 필요할때마다 가져와 사용하거나 혹은 사용될 수 있게 공유할 수 있습니다.&lt;/p&gt;
+&lt;h1&gt;☁️ Azure Action&lt;/h1&gt;
+&lt;p&gt;Github Actions의 실사용 흐름은 마켓 플레이스에서 해당 서비스 Action을 가져와서 필요한 설정을 넣고 원하는 커맨드를 입력하면 보통 끝납니다. 물론 프로덕트가 거대해지고 사용하는 서비스가 많아진다면 Action 코드도 점점 더 길어지고 많은 파일들이 필요하게 되겠죠.&lt;/p&gt;
+&lt;p&gt;Azure에서는 Static Web Apps(preview)라는 서비스를 만들었습니다만 아직 프리뷰 버전이라서 버그가 많은 관계로 Storage와 CDN으로 배포하는 Action 코드를 작성해보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; CD
+
+&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; master &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; master &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;upload&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Azure Login
+        &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; azure/login@v1.1
+        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;creds&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.AZURE_CREDENTIALS &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Checkout
+        &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2
+
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Azure CLI Action
+        &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Azure/cli@v1.0.0
+        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;inlineScript&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+            az storage blob upload-batch --connection-string &apos;${{ secrets.AZURE_CONNECTION_STRING }}&apos; -s ./build -d &apos;$web&apos;
+            az cdn endpoint purge --content-paths &apos;/*&apos; -g ${{ secrets.AZURE_RESOURCE_GROUP }} --profile-name ${{ secrets.AZURE_PROFILE_NAME }} -n ${{ secrets.AZURE_ENDPOINT}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;설명을 잠깐 해드리자면 먼저 Azure Login Action을 호출하여 사용자를 인증합니다. 그리고 Azure CLI Action으로 Static Web Page를 Azure Storage에 업로드한 후 Azure CDN 캐시를 초기화합니다.&lt;/p&gt;
+&lt;p&gt;여기서 눈여겨볼 점이 &lt;code class=&quot;language-text&quot;&gt;${{ secrets. ... }}&lt;/code&gt; 라는 변수인데 이것들은 저장소의 상단 탭 중 &lt;code class=&quot;language-text&quot;&gt;Settings&lt;/code&gt;로 이동하면 &lt;code class=&quot;language-text&quot;&gt;Secrets&lt;/code&gt; 카테고리에서 선언할 수 있습니다.&lt;/p&gt;
+&lt;h1&gt;✔️ 확인&lt;/h1&gt;
+&lt;p&gt;Github Actions가 제대로 동작하고 있는지 확인해보려면 다시 해당 저장소 &lt;code class=&quot;language-text&quot;&gt;Actions&lt;/code&gt; 탭을 선택하면 관련 페이지로 이동합니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/110187db95a274e9bbac456e1ed5e593/35890/ga-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyUlEQVQY021QOQ7CQAzcF/MDWv5APkCDBAUPgBJeQEMNiSAh2fscnMAGBKw0mpFlz9jLlvsKxe6K+bbGbFPicOIQ3R3XW4OUEgBCZkJfe9b/P1ZsK0xXF0zXJSaLM3ZHDqcF2k4gxPiDmHUI8C9kHWMC6xu+E3szLjWUsTDWD9DWDSyNI02sDYQiUB+XamDvA1g2+TxFaY26bnBvW1jnMIYSrE+0Yf4CwFKQkHKcZ1l8GkpKrJunoSbzGGKOhXYJyr0NDV3BuRjnH1JFgul4D8C1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GA-2&quot;
+        title=&quot;GA-2&quot;
+        src=&quot;/static/110187db95a274e9bbac456e1ed5e593/5a190/ga-2.png&quot;
+        srcset=&quot;/static/110187db95a274e9bbac456e1ed5e593/772e8/ga-2.png 200w,
+/static/110187db95a274e9bbac456e1ed5e593/e17e5/ga-2.png 400w,
+/static/110187db95a274e9bbac456e1ed5e593/5a190/ga-2.png 800w,
+/static/110187db95a274e9bbac456e1ed5e593/c1b63/ga-2.png 1200w,
+/static/110187db95a274e9bbac456e1ed5e593/35890/ga-2.png 1582w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그리고 자세한 진행 사항이나 설정값을 확인하기 위해선 리스트에 존재하는 커밋을 선택하면 됩니다.&lt;/p&gt;
+&lt;h1&gt;💭 끝으로&lt;/h1&gt;
+&lt;p&gt;이처럼 Github Actions는 강력한 마켓 플레이스를 기반으로 누구나 쉽고 빠르게 CI/CD를 만들 수 있습니다. 그러나 100% 무료 기능은 아닙니다. 그나마 Pubic 저장소는 무료이며 Private 저장소는 시간당, runner(OS)에 따라 가격이 책정됩니다. 이점 유의하시길 바라며 &lt;del&gt;(사실 그리 큰 유의점은 아닙니다만…)&lt;/del&gt;, 그럼 하나라도 더 자동화를 하여 생산성을 높여보시길 바랍니다. 😄&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Atomic Design과 BEM (ABEM)]]></title><description><![CDATA[…]]></description><link>https://lannex.github.io/blog/2020/abem/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/abem/</guid><pubDate>Fri, 20 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;많은 분들이 소프트웨어에서 아키텍처와 디자인은 늘 중요하다고는 말하지만 잘 간과하곤 합니다.
 사실 그렇게 간과하더라도 추상적으로, 그리고 말로만 알고 있는 그 중요성을 새로운 기능 추가 및 수정을 비롯한 다양한 요구사항을 겪으며 여러 프로젝트를 거치다보면 결국에는 알게 됩니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;거의 모든 것을 아키텍처와 디자인이 좌우한다&lt;/strong&gt;라는 것을 말입니다.&lt;/p&gt;
 &lt;h1&gt;왜 중요할까?&lt;/h1&gt;
