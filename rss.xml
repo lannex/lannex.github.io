@@ -1,4 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 14 Dec 2020 15:37:02 GMT</lastBuildDate><item><title><![CDATA[Github Actions로 간단한 Azure Static Web Page 배포]]></title><description><![CDATA[Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다. 현재 사내에서 사용하는 저장소가 Gitlab이라 Gitlab CI/CD는 많이 사용하나 Github Actions…]]></description><link>https://lannex.github.io/blog/2020/github-action/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/github-action/</guid><pubDate>Sun, 29 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Dec 2020 16:20:24 GMT</lastBuildDate><item><title><![CDATA[EFK Stack... 그 중에 Fluentd, Fluent Bit]]></title><description><![CDATA[현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging…]]></description><link>https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</guid><pubDate>Tue, 15 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging을 구축한 경험, 특히 Fluent Bit과 Fluentd를 중심으로 기본 설정에 관해 이야기해볼까 합니다.&lt;/p&gt;
+&lt;h1&gt;👀 ELK와 EFK Stack?&lt;/h1&gt;
+&lt;p&gt;EFK란 Elasticsearch, Fluentd 그리고 Kibana의 첫 글자를 딴 약자입니다. 대표적으로 알려진 ELK는 Elasticsearch, Logstash 와 Kibana의 약자이며 두 Stack의 차이로는 로그 수집기를 Fluentd로 사용할 것인지 아니면 Logstash로 사용할 것인지 말고는 없습니다.&lt;/p&gt;
+&lt;p&gt;한 단계 더 가서 Logstash와 Fluentd의 차이점을 얘기해보자면 Logstash는 자바 런타임이 필요한 JRuby로 되어있으며 Fluentd는 자바 런타임이 필요하지 않은 CRuby로 되어있습니다. 그리고 Logstash에 비해 Fluentd는 조금 더 가벼우며 때에 따라 로그 전송만 담당하는, 더욱 경량화된 Fluent Bit을 사용 할 수 있습니다.&lt;/p&gt;
+&lt;h1&gt;📐 Architecture&lt;/h1&gt;
+&lt;p&gt;기본적인 구조는 아래와 같습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d14a60a80d68a075a37921dbb069e115/eea4a/efk.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHutEil/8QAGBAAAgMAAAAAAAAAAAAAAAAAABEBICH/2gAIAQEAAQUCesin/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFhAAAwAAAAAAAAAAAAAAAAAAACAx/9oACAEBAAY/AiL/AP/EABoQAAMBAAMAAAAAAAAAAAAAAAERIQAgMWH/2gAIAQEAAT8hZo7mtd4iQyF5w//aAAwDAQACAAMAAAAQf8//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPxCH/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8QZ//EABsQAQEAAwADAAAAAAAAAAAAAAERACFBMVFx/9oACAEBAAE/ECDoJ1wlxAV5AU2e/mA0t65kN685MCZ//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;EFK&quot;
+        title=&quot;EFK&quot;
+        src=&quot;/static/d14a60a80d68a075a37921dbb069e115/4b190/efk.jpg&quot;
+        srcset=&quot;/static/d14a60a80d68a075a37921dbb069e115/e07e9/efk.jpg 200w,
+/static/d14a60a80d68a075a37921dbb069e115/066f9/efk.jpg 400w,
+/static/d14a60a80d68a075a37921dbb069e115/4b190/efk.jpg 800w,
+/static/d14a60a80d68a075a37921dbb069e115/e5166/efk.jpg 1200w,
+/static/d14a60a80d68a075a37921dbb069e115/eea4a/efk.jpg 1280w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;각 클라이언트에서 내부 네트워크로 구성된 서버에 Fluent Bit으로 log를 수집 후 외부 네트워크가 가능한 서버로 전송합니다. 데이터를 받는 서버에서는 Fluentd를 Aggregator의 역할로 구성하고 다시 Elasticsearch로 데이터를 전송, Kibana는 Elasticsearch의 데이터를 시각화합니다.&lt;/p&gt;
+&lt;h1&gt;🤲 Fluent Bit과 Fluentd&lt;/h1&gt;
+&lt;p&gt;앞서 언급했듯이 Fluent Bit은 Fluentd의 경량화된 버전으로 C로 만들어졌습니다. 서버 환경이 워낙 좋아져서 크게 상관은 없지만 서버에서 Forwarder만 담당한다면 좀 더 가벼운 Fluent Bit을 사용하는 것이 좋습니다.&lt;/p&gt;
+&lt;h1&gt;👉 Input → Parser → Filter → Output&lt;/h1&gt;
+&lt;p&gt;Fluent Bit과 Fluentd의 파이프라인은 중간중간 추가되는 과정이 있어서 조금은 다르지만 크게는 이러한 과정으로 진행됩니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Input: 서로 다른 소스에서 어떤 데이터를 수집할 지 결정&lt;/li&gt;
+&lt;li&gt;Parser: 수집하는 데이터를 구조화하는 파싱&lt;/li&gt;
+&lt;li&gt;Filter: 데이터를 특정 대상으로 전달하기 전에 데이터를 가공&lt;/li&gt;
+&lt;li&gt;Output: 가공된 데이터를 내보내는 방식을 정의&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;각 과정에서 다양한 플러그인들이 제공되며 설정을 정의함으로써 원하는 값을 도출하게끔 제어할 수 있습니다.&lt;/p&gt;
+&lt;h1&gt;🚢 Forwarder (Fluent Bit)&lt;/h1&gt;
+&lt;p&gt;프로덕트는 보안상의 이유로 여러 클라이언트에게 on-premise 형태로 제공하고 있습니다. 내부 네트워크로 구성된 서버에는 Docker Swarm으로 오케스트레이션 되니 먼저 많은 Docker들의 Log를 추적해야 했습니다. (Ubuntu 기준으로 Docker Log 위치는 &lt;code class=&quot;language-text&quot;&gt;/var/lib/docker/containers/&amp;lt;container id&amp;gt;/&amp;lt;container id&amp;gt;-json.log&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;각 클라이언트 서버에선 Forwarder로만 사용하기에 Docker Build로 Fluent Bit를 설정하여 서비스합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[INPUT]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             tail&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Parser&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;           docker&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Path&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             /var/lib/docker/containers/*/*.log&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Docker_Mode&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;      On&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Tag&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;              docker.&amp;lt;file_name&gt;&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Tag_Regex&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;        (?&amp;lt;file_name&gt;[a-z0-9]*)-json.log&lt;/span&gt;
+	...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Logging은 Docker 외에도 여러 개 Input을 작성하다 보면 설정 파일이 길어지게 됩니다. 거기에다 각종 Filter 등 다른 과정까지 포함하다 보면 하나의 설정 파일에 감당하기 어렵습니다. 그래서 각 과정을  &lt;code class=&quot;language-text&quot;&gt;@INCLUDE&lt;/code&gt; 를 사용하여 여러 파일로 모듈화를 하면 좋습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token attr-name&quot;&gt;@INCLUDE&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;/fluent-bit/etc/inputs.conf&lt;/span&gt;
+
+&lt;span class=&quot;token attr-name&quot;&gt;@INCLUDE&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;/fluent-bit/etc/filters.conf&lt;/span&gt;
+
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Docker Log를 이렇게 수집한 뒤 여러 Filter를 거쳐서 데이터를 원하는 형태로 가공해야 합니다. 그런고로 Filter야말로 핵심이라 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;무엇보다 Input 설정에서 Tag를 &lt;code class=&quot;language-text&quot;&gt;container id (file_name)&lt;/code&gt; 로 받기 때문에 각 Docker에서 나오는 Log를 인식할 수 있는 값으로 변환해야 하는 것이 중요합니다. 이를 위해 lua 스크립트를 사용해서 docker_metadata를 매칭한 뒤 태그를 변경하는 방법으로 필터링합니다.(참고 &lt;a href=&quot;https://github.com/fluent/fluent-bit/issues/1499&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lua script&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[FILTER]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             lua&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  script&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;           /fluent-bit/bin/docker-metadata.lua&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  call&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             encrich_with_docker_metadata&lt;/span&gt;
+
+[FILTER]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             record_modifier&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Whitelist_key&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;    log&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Whitelist_key&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;    docker.container_name&lt;/span&gt;
+  ...
+
+[FILTER]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             modify&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Rename&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;           docker.container_name container_name&lt;/span&gt;
+	...
+
+[FILTER]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             rewrite_tag&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Rule&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             $container_name (.*) docker.$0 false&lt;/span&gt;
+
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;또한 grep을 써서 선택적으로 데이터를 취하거나 제외할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[FILTER]
+&lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             grep&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
+&lt;span class=&quot;token attr-name&quot;&gt;  Exclude&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;          container_name (.*fluent).+&lt;/span&gt;
+  ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이 후 Output에 forward로 Aggregator에게 데이터를 보내면 됩니다.&lt;/p&gt;
+&lt;h1&gt;🗃 Aggregator (Fluentd)&lt;/h1&gt;
+&lt;p&gt;각 클라이언트에서 저마다 보내오는 데이터를 Fluentd가 수집해서 Elasticsearch로 전송합니다. 이 역할은 한 곳에서만 담당하며 Elasticsearch와 Kibana를 같은 서버에서 함께 사용해도 됩니다.&lt;/p&gt;
+&lt;p&gt;Elasticsearch로 데이터를 전송하기 위해 Fluentd의 &lt;code class=&quot;language-text&quot;&gt;fluent-plugin-elasticsearch&lt;/code&gt;라는 플러그인의 설치가 우선되어야 합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;xml&quot;&gt;&lt;pre class=&quot;language-xml&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;match&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;docker.swarm_reception-api**&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  @type elasticsearch_dynamic
+  logstash_format true
+	logstash_prefix ${record[&apos;biz_client&apos;]}-reception-api
+	...
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;match&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다양한 클라이언트에서 데이터를 전송받으니 어떤 클라이언트인지 식별할 필요가 있습니다. Forwarder가 식별할 record를 하나 지정해서 보내주면 type을 &lt;code class=&quot;language-text&quot;&gt;elasticsearch_dynamic&lt;/code&gt; 로 선언해서 유동적으로 처리할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;다중 match와 label등을 활용하여 데이터를 다시 분류 후 Elasticsearch로 전송하면 이를 바탕으로 드디어 Kibana에서 시각화가 가능해집니다.&lt;/p&gt;
+&lt;h1&gt;📊 Elasticsearch와 Kibana&lt;/h1&gt;
+&lt;p&gt;Elasticsearch와 Kibana는 직접 설치해서 사용해도 되지만 최근에는 여러 클라우드에서 쉽게 배포까지 자동으로 하는 환경을 만들어 줍니다. 더군다나 &lt;a href=&quot;https://elastic.co&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;elastic.co&lt;/a&gt;에서는 사이트 내에서 클라우드로 자동 배포하고 매니지먼트까지 할 수 있는 기능들을 제공합니다.&lt;/p&gt;
+&lt;p&gt;배포 후 Kibana에 접속하여 Stack Management에서 Index Management를 확인해보면 index가  &lt;code class=&quot;language-text&quot;&gt;&amp;lt;client_name&amp;gt;-&amp;lt;docker_name&amp;gt;-&amp;lt;date&amp;gt;&lt;/code&gt;의 형식으로 생성되는 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이를 토대로 Kibana 인덱스 패턴을 만들면 EFK의 기본 과정은 끝이 납니다.&lt;/p&gt;
+&lt;h1&gt;📃 끝으로&lt;/h1&gt;
+&lt;p&gt;큰 Pipeline은 이렇게 구성되었습니다. 실제로는 더 다양하고 많은 Filter들과 설정들로 다소 복잡하게 구성됩니다. 그래도 제대로 가공된 데이터만 Elasticsearch로 전송할 수 있다면 Kibana에서 정말 편하게 다양한 정보를 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;그럼 여기까지 MSA, Docker Swarm Loggin을 위한 EFK 였습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Github Actions로 간단한 Azure Static Web Page 배포]]></title><description><![CDATA[Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다. 현재 사내에서 사용하는 저장소가 Gitlab이라 Gitlab CI/CD는 많이 사용하나 Github Actions…]]></description><link>https://lannex.github.io/blog/2020/github-action/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/github-action/</guid><pubDate>Sun, 29 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Github Actions은 Github 내부에서 CI/CD를 쉽게 만들어 사용할 수 있는 막강한 기능입니다.&lt;/p&gt;
 &lt;p&gt;현재 사내에서 사용하는 저장소가 Gitlab이라 Gitlab CI/CD는 많이 사용하나 Github Actions은 사용할 일이 개인적인 작업 말고는 없었습니다. 하지만 최근에 비즈니스적인 이유로 Github 혜택을 받게 되어 저장소를 조금씩 이전하고 있어서 드디어 Github Actions를 실무에서도 사용할 수 있게 되었습니다.&lt;/p&gt;
 &lt;p&gt;워낙 쉽고 편리하니 짧게나마 알아보겠습니다.&lt;/p&gt;
 &lt;h1&gt;🤔 Github Actions이란?&lt;/h1&gt;
