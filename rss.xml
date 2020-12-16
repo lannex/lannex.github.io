@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Dec 2020 16:20:24 GMT</lastBuildDate><item><title><![CDATA[EFK Stack... 그 중에 Fluentd, Fluent Bit]]></title><description><![CDATA[현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging…]]></description><link>https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</guid><pubDate>Tue, 15 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging을 구축한 경험, 특히 Fluent Bit과 Fluentd를 중심으로 기본 설정에 관해 이야기해볼까 합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[lannex]]></title><description><![CDATA[website]]></description><link>https://lannex.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 16 Dec 2020 15:39:08 GMT</lastBuildDate><item><title><![CDATA[EFK Stack, 그 중에 Fluentd와 Fluent Bit]]></title><description><![CDATA[현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging…]]></description><link>https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</link><guid isPermaLink="false">https://lannex.github.io/blog/2020/EFK-Fluentd-Fluentbit/</guid><pubDate>Tue, 15 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;현재 사내에서는 컨테이너 오케스트레이션 툴로 Docker Swarm을 사용하고 있습니다. Kubernetes 전환 얘기가 솔솔 나오는 와중에 새로운 프로덕트를 내놓게 되었는데 이 과정에서 EFK를 사용하여 Logging을 구축한 경험, 특히 Fluent Bit과 Fluentd를 중심으로 기본 설정에 관해 이야기해볼까 합니다.&lt;/p&gt;
 &lt;h1&gt;👀 ELK와 EFK Stack?&lt;/h1&gt;
 &lt;p&gt;EFK란 Elasticsearch, Fluentd 그리고 Kibana의 첫 글자를 딴 약자입니다. 대표적으로 알려진 ELK는 Elasticsearch, Logstash 와 Kibana의 약자이며 두 Stack의 차이로는 로그 수집기를 Fluentd로 사용할 것인지 아니면 Logstash로 사용할 것인지 말고는 없습니다.&lt;/p&gt;
 &lt;p&gt;한 단계 더 가서 Logstash와 Fluentd의 차이점을 얘기해보자면 Logstash는 자바 런타임이 필요한 JRuby로 되어있으며 Fluentd는 자바 런타임이 필요하지 않은 CRuby로 되어있습니다. 그리고 Logstash에 비해 Fluentd는 조금 더 가벼우며 때에 따라 로그 전송만 담당하는, 더욱 경량화된 Fluent Bit을 사용 할 수 있습니다.&lt;/p&gt;
@@ -50,7 +50,9 @@
 &lt;h1&gt;🚢 Forwarder (Fluent Bit)&lt;/h1&gt;
 &lt;p&gt;프로덕트는 보안상의 이유로 여러 클라이언트에게 on-premise 형태로 제공하고 있습니다. 내부 네트워크로 구성된 서버에는 Docker Swarm으로 오케스트레이션 되니 먼저 많은 Docker들의 Log를 추적해야 했습니다. (Ubuntu 기준으로 Docker Log 위치는 &lt;code class=&quot;language-text&quot;&gt;/var/lib/docker/containers/&amp;lt;container id&amp;gt;/&amp;lt;container id&amp;gt;-json.log&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;각 클라이언트 서버에선 Forwarder로만 사용하기에 Docker Build로 Fluent Bit를 설정하여 서비스합니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[INPUT]
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# inputs.conf&lt;/span&gt;
+
+[INPUT]
 &lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             tail&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  Parser&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;           docker&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  Path&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             /var/lib/docker/containers/*/*.log&lt;/span&gt;
@@ -59,14 +61,18 @@
 &lt;span class=&quot;token attr-name&quot;&gt;  Tag_Regex&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;        (?&amp;lt;file_name&gt;[a-z0-9]*)-json.log&lt;/span&gt;
 	...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Logging은 Docker 외에도 여러 개 Input을 작성하다 보면 설정 파일이 길어지게 됩니다. 거기에다 각종 Filter 등 다른 과정까지 포함하다 보면 하나의 설정 파일에 감당하기 어렵습니다. 그래서 각 과정을  &lt;code class=&quot;language-text&quot;&gt;@INCLUDE&lt;/code&gt; 를 사용하여 여러 파일로 모듈화를 하면 좋습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token attr-name&quot;&gt;@INCLUDE&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;/fluent-bit/etc/inputs.conf&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# fluent-bit.conf&lt;/span&gt;
+
+&lt;span class=&quot;token attr-name&quot;&gt;@INCLUDE&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;/fluent-bit/etc/inputs.conf&lt;/span&gt;
 
 &lt;span class=&quot;token attr-name&quot;&gt;@INCLUDE&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;/fluent-bit/etc/filters.conf&lt;/span&gt;
 
 ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Docker Log를 이렇게 수집한 뒤 여러 Filter를 거쳐서 데이터를 원하는 형태로 가공해야 합니다. 그런고로 Filter야말로 핵심이라 할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;무엇보다 Input 설정에서 Tag를 &lt;code class=&quot;language-text&quot;&gt;container id (file_name)&lt;/code&gt; 로 받기 때문에 각 Docker에서 나오는 Log를 인식할 수 있는 값으로 변환해야 하는 것이 중요합니다. 이를 위해 lua 스크립트를 사용해서 docker_metadata를 매칭한 뒤 태그를 변경하는 방법으로 필터링합니다.(참고 &lt;a href=&quot;https://github.com/fluent/fluent-bit/issues/1499&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lua script&lt;/a&gt;)&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[FILTER]
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# filters.conf&lt;/span&gt;
+
+[FILTER]
 &lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             lua&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  script&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;           /fluent-bit/bin/docker-metadata.lua&lt;/span&gt;
@@ -92,7 +98,9 @@
 
 ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;또한 grep을 써서 선택적으로 데이터를 취하거나 제외할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;[FILTER]
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;properties&quot;&gt;&lt;pre class=&quot;language-properties&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# filters.conf&lt;/span&gt;
+
+[FILTER]
 &lt;span class=&quot;token attr-name&quot;&gt;  Name&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;             grep&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  Match&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;            docker.*&lt;/span&gt;
 &lt;span class=&quot;token attr-name&quot;&gt;  Exclude&lt;/span&gt; &lt;span class=&quot;token attr-value&quot;&gt;          container_name (.*fluent).+&lt;/span&gt;
@@ -101,7 +109,29 @@
 &lt;h1&gt;🗃 Aggregator (Fluentd)&lt;/h1&gt;
 &lt;p&gt;각 클라이언트에서 저마다 보내오는 데이터를 Fluentd가 수집해서 Elasticsearch로 전송합니다. 이 역할은 한 곳에서만 담당하며 Elasticsearch와 Kibana를 같은 서버에서 함께 사용해도 됩니다.&lt;/p&gt;
 &lt;p&gt;Elasticsearch로 데이터를 전송하기 위해 Fluentd의 &lt;code class=&quot;language-text&quot;&gt;fluent-plugin-elasticsearch&lt;/code&gt;라는 플러그인의 설치가 우선되어야 합니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;xml&quot;&gt;&lt;pre class=&quot;language-xml&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;match&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;docker.swarm_reception-api**&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Dockerfile&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; fluent/fluentd&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;v1.11&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;1
+
+&lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; root
+
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; apk add &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cache &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;update &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;virtual .build&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;deps \
+  sudo build&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;base ruby&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev \
+  &amp;amp;&amp;amp; sudo gem install \
+    fluent&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;concat \
+    fluent&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;elasticsearch \
+  &amp;amp;&amp;amp; apk del .build&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;deps \
+  &amp;amp;&amp;amp; rm &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
+
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; conf/* /fluentd/etc/
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; entrypoint.sh /bin/
+
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; chmod +x /bin/entrypoint.sh
+
+&lt;span class=&quot;token keyword&quot;&gt;USER&lt;/span&gt; fluent&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;xml&quot;&gt;&lt;pre class=&quot;language-xml&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;# fluent.conf
+
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;match&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;docker.swarm_reception-api**&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
   @type elasticsearch_dynamic
   logstash_format true
 	logstash_prefix ${record[&apos;biz_client&apos;]}-reception-api
