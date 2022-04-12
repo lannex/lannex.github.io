@@ -88,11 +88,11 @@ data-styled.g2[id="BlogPost__StyledBlogPostTemplate-sc-1528t6i-0"]{content:"ifFM
 <p>최근 게시물에서 <a href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html" target="_blank" rel="nofollow noopener noreferrer">React 18로 앱 업그레이드</a> 단계별 가이드를 공유했습니다.
 이 게시물에서는 React 18의 새로운 기능과 앞으로 어떤 의미가 있는지에 대해 간략하게 설명합니다.</p>
 <p>최신 메이저 버전에는 자동 배치<small>(automatic batching)</small>, startTransition과 같은 새로운 API, 서스펜스<small>(Suspense)</small>를 지원하는 스트리밍 서버 사이드 렌더링 등의 기능이 바로 포함됩니다.</p>
-<p>React 18의 많은 기능은 새로운 동시성 렌더러<small>(new concurrent renderer)</small>를 기반으로 구축되었으며, 이는 강력한 새 기능을 구현한 물밑의 변화입니다.
-동시성 React는 선택입니다 - 동시성 기능을 사용하는 경우에만 가능합니다 - 그러나 사람들이 애플리케이션을 만드는 방식에 큰 영향을 미칠 것이라고 생각합니다.</p>
+<p>React 18의 많은 기능은 강력한 새 기능을 선보이게하는 물밑의 변화인 새로운 동시 렌더러<small>(new concurrent renderer)</small>를 기반으로 구축되었습니다.
+동시성 React는 선택입니다 - 동시성 기능을 사용하는 경우에만 가능합니다 - 그렇지만 사람들이 애플리케이션을 만드는 방식에 큰 영향을 미칠 것이라고 생각합니다.</p>
 <p>우리는 React의 동시성 지원을 연구하고 개발하는 데 수년을 보냈고 기존 사용자에게 점진적인 적용 방법을 제공하기 위해 각별한 주의를 기울였습니다.
 지난 여름, 커뮤니티 전문가들에게 피드백을 수집하고 전체 React 생태계에 대한 원활한 업그레이드 경험을 보장하기 위해 <a href="https://reactjs.org/blog/2021/06/08/the-plan-for-react-18.html" target="_blank" rel="nofollow noopener noreferrer">React 18 워킹 그룹을 결성했습니다.</a></p>
-<p>놓칠 경우를 대비해 전달하자면, React Conf 2021에서 이 비전을 많이 공유했습니다.</p>
+<p>놓칠 경우를 대비해 전달하자면, React Conf 2021에서 이러한 비전을 많이 공유했습니다.</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=FZ0cG47msEk&#x26;list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa" target="_blank" rel="nofollow noopener noreferrer">기조 연설</a>에서 개발자가 훌륭한 사용자 경험을 쉽게 구축할 수 있도록 React 18이 우리의 미션에 어떻게 부합하는지 설명합니다.</li>
 <li><a href="https://twitter.com/shrutikapoor08" target="_blank" rel="nofollow noopener noreferrer">Shruti Kapoor</a>는 <a href="https://www.youtube.com/watch?v=ytudH8je5ko&#x26;list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&#x26;index=2" target="_blank" rel="nofollow noopener noreferrer">React 18의 새로운 기능을 사용하는 방법을 시연했습니다.</a></li>
@@ -111,7 +111,7 @@ React 개발자는 사용자 경험을 어떻게 할 것인지 <em>무엇</em>�
 <p>하지만, 동시성 React는 일반적인 구현 세부 사항보다 더 중요합니다. - 이것은 React의 핵심 렌더링 모델에 대한 기본 업데이트입니다.
 그래서 동시성이 어떻게 동작하는지 아는 것은 그다지 중요하지 않지만, 높은 레벨에서 그것이 무엇인지 알 가치는 있을 수 있습니다.</p>
 <p>동시성 React의 주요한 속성은 렌더링이 중단될 수 있다는 것입니다.
-React 18로 처음 업그레이드할 때 동시성 기능을 추가하기 전에 업데이트가 이전 버전의 React와 동일하게 렌더링됩니다. - 하나의 중단 없는 동기 트랜잭션으로.
+React 18로 처음 업그레이드할 때 동시성 기능을 추가하기 전, 업데이트가 이전 버전의 React와 같게 렌더링됩니다. - 하나의 중단 없는 동기 트랜잭션으로.
 동기 렌더링일 시 업데이트가 렌더링을 시작하면 사용자는 결과를 화면에서 볼 수 있을 때까지 어떤 것도 렌더링을 중단할 수 없습니다.</p>
 <p>동시성 렌더링에선 항상 이러한 경우가 있는 것은 아닙니다.
 React는 업데이트 렌더링을 시작하고 중간에 일시 중지했다가 나중에 계속할 수 있습니다.
@@ -122,7 +122,7 @@ React는 렌더가 중단되더라도 UI가 일관되게 보여지도록 보장�
 즉, UI가 대규모 렌더링 작업 중이라도 사용자 입력에 즉시 응답할 수 있어서 유연한 사용자 경험을 만들 수 있다는 것을 의미합니다.</p>
 <p>다른 예로는 재사용 가능한 상태(state)가 있습니다.
 동시성 React는 화면에서 UI 섹션을 삭제한 다음, 이전 상태를 재사용하면서 추후 다시 추가할 수 있습니다.
-예를 들어 사용자가 한 화면에서 멀어진 후 뒤로 가기를 탭하면, React는 이전 화면을 이전과 동일한 상태로 이전 화면을 복원할 수 있어야 합니다.
+예를 들어 사용자가 한 화면을 탭으로 이동하거나 뒤로 이동할 때, React는 이전 화면을 이전과 같은 상태로 이전 화면을 복원할 수 있어야 합니다.
 곧 있을 마이너 변경점에서는 이 패턴을 구현한  <code class="language-text">&lt;Offscreen></code> 이라는 새로운 컴포넌트를 추가할 계획입니다.
 마찬가지로 Offscreen을 사용하여 백그라운드에서 새 UI를 준비할 수 있으므로 사용자가 UI를 확인하기 전에 미리 준비할 수 있습니다.</p>
 <p>동시성 렌더링은 React의 강력한 새로운 도구이며 서스펜스<small>(Suspense)</small>, 트랜지션<small>(transitions)</small>과 스트리밍 서버 렌더링을 비롯한 대부분의 새 기능은 이를 활용하도록 만들어져 있습니다.
