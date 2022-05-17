@@ -494,8 +494,8 @@ BDD에 대한 가장 큰 오해 중 하나는 BDD가 UI 테스트의 동의어�
 개발자는 미리 결정된 솔루션을 따라야 하는 족쇄에서 벗어나 자유롭게 혁신할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Scenario: 사용자가 애플리케이션에 로그인
     Given 권한이 있는 사용자 "John"가 있습니다
-    When “John”이 올바르게 로그인합니다.
-    Then “John”은 아이템에 접근할 수 있습니다.</code></pre></div>
+    When “John”이 올바르게 로그인합니다
+    Then “John”은 아이템에 접근할 수 있습니다</code></pre></div>
 <h2 id="bdd는-모든-레벨에서-동작합니다" style="position:relative;"><a href="#bdd%EB%8A%94-%EB%AA%A8%EB%93%A0-%EB%A0%88%EB%B2%A8%EC%97%90%EC%84%9C-%EB%8F%99%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4" aria-label="bdd는 모든 레벨에서 동작합니다 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BDD는 모든 레벨에서 동작합니다</h2>
 <p>BDD에 대한 또 다른 큰 오해는 통합 및 유닛 테스트에 작동하지 않는다는 것입니다.
 그 이유는 Gherkin이 추가적인 추상화 계층을 도입하여 사람들이 BDD가 E2E 테스트와 동의어라고 믿게 했기 때문입니다.
@@ -562,7 +562,7 @@ BDD는 일반적으로 <a href="https://semaphoreci.com/blog/the-benefits-of-acc
 <p>행위 주도 개발은 소프트웨어 개발 프로세스에서 다양한 단계의 최적화로부터 발전했습니다.
 하나의 짧은 피드백 루프에서 시스템을 분석, 테스트, 코딩 그리고 설계함으로써 더 나은 소프트웨어를 생산할 수 있으며, 이는 실수와 낭비적인 작업을 피할 수 있도록 도와줍니다.</p>
 <p>BDD가 <a href="https://semaphoreci.com/blog/test-driven-development" target="_blank" rel="nofollow noopener noreferrer">TDD</a>에 기원을 두고 있어서 TDD는 테스트에 관한 것이고 BDD가 소프트웨어 테스트에 접근하는 또 다른 방법일 뿐이라는 것은 일반적인 오해입니다.
-테스트는 좋은 부산물이지만, 이 경우를 말하진 않습니다.
+이것은 사실이 아닙니다. (비록 테스트가 좋은 부산물이지만)
 BDD는 다음과 같은 하나의 간단한 아이디어에서 파생된 소프트웨어 개발에 대한 전체론적 접근 방식입니다: 피드백 루프를 최적화하려는 열망</p>
 <p>BDD는 효과적인 소프트웨어 개발을 위한 강력한 도구이고, 제대로 배우고 적용하는 데 시간이 걸립니다.
 BDD는 가치를 더하고 의미를 부여하며 설계에 보탬이 되는 테스트를 작성하는 데 도움이 됩니다.
