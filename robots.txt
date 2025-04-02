@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /resume
-Sitemap: https://lannex.github.io/sitemap/sitemap-index.xml
+Sitemap: https://lannex.github.io/sitemap-index.xml
 Host: https://lannex.github.io
